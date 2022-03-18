@@ -1,67 +1,25 @@
-import "./App.css";
+import React, { useState } from "react";
+import { FilterRandomWord } from "./components/FilterRandomWord";
+import { Keyboard } from "./components/Keyboard";
+import { LettersFromUser } from "./components/LettersFromUser";
+import { WrongWordsList } from "./components/WrongWordsList";
+import Winnings from "./components/Winnings";
 
-function App() {
+// const randomWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+
+const App = () => {
+  // const [secretword, setSecretword] = useState(randomWord);
+
   return (
     <div className="App">
       <h1>Wordgame</h1>
-      <input type="radio" id="allwords" name="words" value="" />
-      <label for="allwords">Randomiserat val.</label>
-      <input type="radio" id="fourletterword" name="words" value="" />
-      <label for="fourletterword">Fyra Bokstäver</label>
-      <input type="radio" id="fiveletterword" name="words" value="" />
-      <label for="fiveletterword">Fem Bokstäver</label>
-      <input type="radio" id="sixletterword" name="words" value="" />
-      <label for="sixletterword">Sex Bokstäver</label>
-      <input type="radio" id="sevenletterword" name="words" value="" />
-      <label for="sevenletterword">Sju Bokstäver</label>
-      <input type="button" value="Ladda nytt ord" id="refreshButton" />
-      <div id="gameBox">
-        <div id="firstInput"></div>
-        <div id="secondInput"></div>
-      </div>
-      <div id="keyboard-cont">
-        <div className="first-row">
-          <button className="keyboard-button">Q</button>
-          <button className="keyboard-button">W</button>
-          <button className="keyboard-button">E</button>
-          <button className="keyboard-button">R</button>
-          <button className="keyboard-button">T</button>
-          <button className="keyboard-button">Y</button>
-          <button className="keyboard-button">U</button>
-          <button className="keyboard-button">I</button>
-          <button className="keyboard-button">O</button>
-          <button className="keyboard-button">P</button>
-          <button className="keyboard-button">Å</button>
-        </div>
-        <div className="second-row">
-          <button className="keyboard-button">A</button>
-          <button className="keyboard-button">S</button>
-          <button className="keyboard-button">D</button>
-          <button className="keyboard-button">F</button>
-          <button className="keyboard-button">G</button>
-          <button className="keyboard-button">H</button>
-          <button className="keyboard-button">J</button>
-          <button className="keyboard-button">K</button>
-          <button className="keyboard-button">L</button>
-          <button className="keyboard-button">Ö</button>
-          <button className="keyboard-button">Ä</button>
-        </div>
-        <div className="third-row">
-          <button className="keyboard-button">Del</button>
-          <button className="keyboard-button">Z</button>
-          <button className="keyboard-button">X</button>
-          <button className="keyboard-button">C</button>
-          <button className="keyboard-button">V</button>
-          <button className="keyboard-button">B</button>
-          <button className="keyboard-button">N</button>
-          <button className="keyboard-button">M</button>
-          <button className="keyboard-button">Enter</button>
-        </div>
-      </div>
-      <h2 id="wrongWords">d</h2>
-      <ul id="listOfLetters">d</ul>
+      <FilterRandomWord />
+      <Winnings />
+      <LettersFromUser />
+      <Keyboard />
+      <WrongWordsList />
     </div>
   );
-}
+};
 
 export default App;
