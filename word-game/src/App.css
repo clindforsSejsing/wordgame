@@ -1,0 +1,51 @@
+h1 {
+  text-align: center;
+}
+
+#keyboard-cont {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#keyboard-cont div {
+  display: flex;
+}
+
+.second-row {
+  margin: 0.5rem 0;
+}
+
+.keyboard-button {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0.4rem;
+  margin: 0 5px;
+  cursor: pointer;
+}
+#gameBox {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+#firstInput {
+  margin-left: 6em;
+}
+#firstInput div {
+  border: 2px solid gray;
+  border-radius: 3px;
+  margin: 2px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  height: 1em;
+  width: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  float: left;
+}
+#secondInput {
+  margin-left: 8em;
+  padding: 3em;
+}
