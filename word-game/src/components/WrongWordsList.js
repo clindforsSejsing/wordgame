@@ -1,4 +1,4 @@
-import "./Winnings.css";
+import './Winnings.css';
 
 function WrongWordsList() {
   return (

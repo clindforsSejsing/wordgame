@@ -1,10 +1,43 @@
-import "./Keyboard.css";
+import './Keyboard.css';
 
-const Keyboard = () => {
+function Keyboard(props) {
+  //add click-event on btns
+  // const handleLetters = (event) => props.onChangeLetter(event.target.value);
+
+  // button.addEventListener("click", (event) => {
+  //   if(event.key === event.target.innerHTML)
+
+  //control so that del and enter is not shown as regular btns
+  // if (onChangeLetter.length < 2) {
+  //   for (let b = 0; b < rightGuessString.length; b++) {
+  //     let currentBox = document.getElementById(b);
+  //     if (currentBox.innerHTML == "") {
+  //       let userChoice = event.target.innerHTML;
+  //       guessesLeft--;
+  //       currentGuess.push((currentBox.innerHTML = userChoice));
+  //       return (currentBox.innerHTML = userChoice);
+  //     }
+  //   }
+  // }
+  // //check to be able to delete with btn Del
+
+  // if (input == "Del") {
+  //   for (let b = currentGuess.length - 1; b >= 0; b--) {
+  //     let currentBox = document.getElementById(b);
+  //     let removed = currentGuess.pop();
+  //     if (currentBox.innerHTML != "") {
+  //       if (removed === currentBox.innerHTML) {
+  //         guessesLeft++;
+  //         return (currentBox.innerHTML = "");
+  //       }
+  //     }
+  //   }
+  // }
   return (
     <>
       <div id="keyboard-cont">
         <div className="first-row">
+          {/* <select value={props.selected} onChange={handleLetters} /> */}
           <button className="keyboard-button">Q</button>
           <button className="keyboard-button">W</button>
           <button className="keyboard-button">E</button>
@@ -44,5 +77,5 @@ const Keyboard = () => {
       </div>
     </>
   );
-};
+}
 export { Keyboard };

@@ -1,54 +1,108 @@
-import "./FilterRandomWord.css";
-
-//Get the array of words and sort them out by numbers of letters.
+import './FilterRandomWord.css';
+import React, { useState } from 'react';
 
 function FilterRandomWord() {
-  // (listOfWords, nrOfLetters)
+  const [word, setWord] = useState(null);
+  const [nrOfLetters, setNrOfLetters] = useState(null);
+  const [unic, setUnic] = useState(null);
 
-  //   let wordArray = listOfWords;
+  const handleChanger = async (e) => {
+    // const response = await fetch('/api/userchoice/' + e.target.value);
+    setNrOfLetters(e.target.value);
+    let response;
+    if (unic) {
+      response = await fetch('/api/userchoice/' + e.target.value + '/unic?');
+    } else {
+      response = await fetch('/api/userchoice/' + e.target.value);
+    }
+    // console.log('current: ' + window.location.origin);
+    console.log('/api/userchoice/' + e.target.value);
+    // console.log(await response.text());
+    // setNrOfLetters(e.target.value);
+    setWord(await response.text());
+  };
 
-  //   if (nrOfLetters == 4) {
-  //     wordArray = wordArray.filter(filter4Words);
-  //   } else if (nrOfLetters == 5) {
-  //     wordArray = wordArray.filter(filter5Words);
-  //   } else if (nrOfLetters == 6) {
-  //     wordArray = wordArray.filter(filter6Words);
-  //   } else if (nrOfLetters == 7) {
-  //     wordArray = wordArray.filter(filter7Words);
-  //   }
+  const handleUnic = async (e) => {
+    //console.log('word: ' + (await word));
+    let response;
+    if (unic) {
+      setUnic(false);
+      response = await fetch('/api/userchoice/' + nrOfLetters);
+    } else {
+      setUnic(true);
+      response = await fetch('/api/userchoice/' + nrOfLetters + '/unic?');
+    }
 
-  //   return wordArray[Math.floor(Math.random() * wordArray.length)];
-  // }
+    //  const response = await fetch('/api/userchoice/id/' + nrOfLetters);
+    //
 
-  // function filter4Words(word) {
-  //   return word.length == 4;
-  // }
+    setWord(await response.text());
+  };
 
-  // function filter5Words(word) {
-  //   return word.length == 5;
-  // }
+  const handleRefresh = async (e) => {
+    let response;
+    if (unic) {
+      response = await fetch('/api/userchoice/' + nrOfLetters + '/unic?');
+    } else {
+      response = await fetch('/api/userchoice/' + nrOfLetters);
+    }
 
-  // function filter6Words(word) {
-  //   return word.length == 6;
-  // }
-
-  // function filter7Words(word) {
-  //   return word.length == 7;
+    setWord(await response.text());
+  };
 
   return (
     <>
       <div className="rowOfRadioBtns">
-        <input type="radio" id="allwords" name="words" value="" />
-        <label for="allwords">Randomiserat val.</label>
-        <input type="radio" id="fourletterword" name="words" value="" />
-        <label for="fourletterword">Fyra Bokstäver</label>
-        <input type="radio" id="fiveletterword" name="words" value="" />
-        <label for="fiveletterword">Fem Bokstäver</label>
-        <input type="radio" id="sixletterword" name="words" value="" />
-        <label for="sixletterword">Sex Bokstäver</label>
-        <input type="radio" id="sevenletterword" name="words" value="" />
-        <label for="sevenletterword">Sju Bokstäver</label>
-        <input type="button" value="Ladda nytt ord" id="refreshButton" />
+        <input
+          type="radio"
+          value="4"
+          id="fourletterword"
+          onChange={handleChanger}
+          name="word"
+        />
+        <label htmlFor="fourletterword">Fyra Bokstäver</label>
+        <input
+          type="radio"
+          value="5"
+          id="fiveletterword"
+          onChange={handleChanger}
+          name="word"
+        />
+        <label htmlFor="fiveletterword">Fem Bokstäver</label>
+
+        <input
+          type="radio"
+          value="6"
+          id="sixletterword"
+          onChange={handleChanger}
+          name="word"
+        />
+        <label htmlFor="sixletterword">Sex Bokstäver</label>
+
+        <input
+          type="radio"
+          value="7"
+          id="sevenletterword"
+          onChange={handleChanger}
+          name="word"
+        />
+        <label htmlFor="sevenletterword">Sju Bokstäver</label>
+
+        <input
+          type="checkbox"
+          value="unic"
+          id="allwords"
+          name="unic"
+          onChange={handleUnic}
+        />
+        <label htmlFor="allwords">Unika bokstäver </label>
+
+        <input
+          type="button"
+          value="Nytt ord"
+          id="refreshButton"
+          onClick={handleRefresh}
+        />
       </div>
     </>
   );

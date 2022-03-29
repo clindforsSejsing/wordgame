@@ -1,0 +1,30 @@
+{
+  "name": "serverside",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node .",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --env=jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clindforsSejsing/wordgame.git"
+  },
+  "author": "CLindforsSejsing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clindforsSejsing/wordgame/issues"
+  },
+  "homepage": "https://github.com/clindforsSejsing/wordgame#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.3"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15"
+  }
+}

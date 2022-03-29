@@ -1,19 +1,34 @@
-import React, { useState } from "react";
-import { FilterRandomWord } from "./components/FilterRandomWord";
-import { Keyboard } from "./components/Keyboard";
-import { LettersFromUser } from "./components/LettersFromUser";
-import { WrongWordsList } from "./components/WrongWordsList";
-import Winnings from "./components/Winnings";
+// import React, { useState } from 'react';
 
-// const randomWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+import { FilterRandomWord } from './components/FilterRandomWord';
+import { Keyboard } from './components/Keyboard';
+import { LettersFromUser } from './components/LettersFromUser';
+import { WrongWordsList } from './components/WrongWordsList';
+import Winnings from './components/Winnings';
+
+// const fetchPost = async () => {
+//   try {
+//     const response = await fetch('/');
+//     setPosts(response.data);
+//   } catch (err) {
+//     console.log('not working');
+//   }
+// };
 
 const App = () => {
-  // const [secretword, setSecretword] = useState(randomWord);
+  // const [word, setWord] = useState('software');
+
+  // const getWord = async () => {
+  //   let result = await fetch('/api/userchoice' + word).then((body) =>
+  //     setWord(body)
+  //   );
+  // };
 
   return (
     <div className="App">
       <h1>Wordgame</h1>
       <FilterRandomWord />
+      {/* <FilterRandomWord onclick={FilterRandomWord} /> */}
       <Winnings />
       <LettersFromUser />
       <Keyboard />
@@ -21,5 +36,5 @@ const App = () => {
     </div>
   );
 };
-
+//import highscorelist when its done
 export default App;

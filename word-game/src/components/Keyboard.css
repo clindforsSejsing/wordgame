@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 #keyboard-cont {
   margin: 1rem 0;
@@ -16,7 +16,7 @@
 }
 
 .keyboard-button {
-  font-family: "Staatliches", cursive;
+  font-family: 'Staatliches', cursive;
   font-size: 1.5rem;
   font-weight: 700;
   padding: 0.4rem;
