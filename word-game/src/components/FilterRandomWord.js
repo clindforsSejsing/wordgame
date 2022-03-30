@@ -1,14 +1,17 @@
 import './FilterRandomWord.css';
+import { LettersFromUser } from './LettersFromUser.js';
 import React, { useState } from 'react';
 
 function FilterRandomWord() {
   const [word, setWord] = useState(null);
   const [nrOfLetters, setNrOfLetters] = useState(null);
   const [unic, setUnic] = useState(null);
+  let setWord2;
 
   const handleChanger = async (e) => {
     // const response = await fetch('/api/userchoice/' + e.target.value);
     setNrOfLetters(e.target.value);
+
     let response;
     if (unic) {
       response = await fetch('/api/userchoice/' + e.target.value + '/unic?');
@@ -19,11 +22,14 @@ function FilterRandomWord() {
     console.log('/api/userchoice/' + e.target.value);
     // console.log(await response.text());
     // setNrOfLetters(e.target.value);
-    setWord(await response.text());
+    let responseWord = await response.text();
+    // setWord(await response.text());
+    setWord(responseWord);
+    setWord2 = responseWord;
   };
 
   const handleUnic = async (e) => {
-    //console.log('word: ' + (await word));
+    console.log('word: ' + (await word));
     let response;
     if (unic) {
       setUnic(false);
@@ -35,8 +41,9 @@ function FilterRandomWord() {
 
     //  const response = await fetch('/api/userchoice/id/' + nrOfLetters);
     //
-
-    setWord(await response.text());
+    let responseWord = await response.text();
+    setWord(responseWord);
+    setWord2 = responseWord;
   };
 
   const handleRefresh = async (e) => {
@@ -46,8 +53,9 @@ function FilterRandomWord() {
     } else {
       response = await fetch('/api/userchoice/' + nrOfLetters);
     }
-
-    setWord(await response.text());
+    let responseWord = await response.text();
+    setWord(responseWord);
+    setWord2 = responseWord;
   };
 
   return (
@@ -95,7 +103,7 @@ function FilterRandomWord() {
           name="unic"
           onChange={handleUnic}
         />
-        <label htmlFor="allwords">Unika bokstäver </label>
+        <label htmlFor="allwords">Unika Bokstäver </label>
 
         <input
           type="button"
@@ -103,6 +111,11 @@ function FilterRandomWord() {
           id="refreshButton"
           onClick={handleRefresh}
         />
+      </div>
+      <div id="gameBox">
+        <div id="firstInput">
+          <LettersFromUser word={setWord2} />
+        </div>
       </div>
     </>
   );
