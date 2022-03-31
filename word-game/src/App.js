@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { UserInput } from './components/UserInput.js';
+// import React, { useState } from 'react';
+// import { UserInput } from './components/UserInput.js';
 import { FilterRandomWord } from './components/FilterRandomWord';
 // import { LettersFromUser } from './components/LettersFromUser';
 import { WrongWordsList } from './components/WrongWordsList';
@@ -12,7 +12,7 @@ const App = () => {
       <FilterRandomWord />
       {/* <Winnings /> */}
       {/* <LettersFromUser /> */}
-      <UserInput />
+      {/* <UserInput /> */}
       <WrongWordsList />
     </div>
   );

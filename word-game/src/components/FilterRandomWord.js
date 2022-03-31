@@ -1,12 +1,12 @@
 import './FilterRandomWord.css';
 import { LettersFromUser } from './LettersFromUser.js';
+import { UserInput } from './UserInput.js';
 import React, { useState } from 'react';
 
 function FilterRandomWord() {
   const [word, setWord] = useState(null);
   const [nrOfLetters, setNrOfLetters] = useState(null);
   const [unic, setUnic] = useState(null);
-  let setWord2;
 
   const handleChanger = async (e) => {
     // const response = await fetch('/api/userchoice/' + e.target.value);
@@ -25,7 +25,6 @@ function FilterRandomWord() {
     let responseWord = await response.text();
     // setWord(await response.text());
     setWord(responseWord);
-    setWord2 = responseWord;
   };
 
   const handleUnic = async (e) => {
@@ -43,7 +42,6 @@ function FilterRandomWord() {
     //
     let responseWord = await response.text();
     setWord(responseWord);
-    setWord2 = responseWord;
   };
 
   const handleRefresh = async (e) => {
@@ -55,7 +53,16 @@ function FilterRandomWord() {
     }
     let responseWord = await response.text();
     setWord(responseWord);
-    setWord2 = responseWord;
+  };
+
+  const onSaveLettersDataHandler = (enterdLetters) => {
+    const splittedWords = {
+      ...enterdLetters,
+    };
+    // setUserLetters(splittedWords);
+
+    console.log(typeof splittedWords);
+    console.log(splittedWords);
   };
 
   return (
@@ -114,9 +121,10 @@ function FilterRandomWord() {
       </div>
       <div id="gameBox">
         <div id="firstInput">
-          <LettersFromUser word={setWord2} />
+          <LettersFromUser word={word} />
         </div>
       </div>
+      <UserInput word={word} onSaveLettersData={onSaveLettersDataHandler} />
     </>
   );
 }
