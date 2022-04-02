@@ -1,13 +1,14 @@
-#gameBox {
+#gameBoxTwo {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-#firstInput {
+#secondInput {
   margin-left: 19.5em;
   padding: 1rem;
 }
-#firstInput li {
+
+#secondInput li {
   border: 2px solid gray;
   border-radius: 3px;
   margin: 0.2em;

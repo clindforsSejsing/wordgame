@@ -1,12 +1,13 @@
-import './FilterRandomWord.css';
+import React, { useState, useEffect } from 'react';
+import './Words.css';
 import { LettersFromUser } from './LettersFromUser.js';
 import { UserInput } from './UserInput.js';
-import React, { useState } from 'react';
 
-function FilterRandomWord() {
+function Words() {
   const [word, setWord] = useState(null);
   const [nrOfLetters, setNrOfLetters] = useState(null);
   const [unic, setUnic] = useState(null);
+  const [char, setChar] = useState('hello');
 
   const handleChanger = async (e) => {
     // const response = await fetch('/api/userchoice/' + e.target.value);
@@ -18,10 +19,6 @@ function FilterRandomWord() {
     } else {
       response = await fetch('/api/userchoice/' + e.target.value);
     }
-    // console.log('current: ' + window.location.origin);
-    console.log('/api/userchoice/' + e.target.value);
-    // console.log(await response.text());
-    // setNrOfLetters(e.target.value);
     let responseWord = await response.text();
     // setWord(await response.text());
     setWord(responseWord);
@@ -38,8 +35,6 @@ function FilterRandomWord() {
       response = await fetch('/api/userchoice/' + nrOfLetters + '/unic?');
     }
 
-    //  const response = await fetch('/api/userchoice/id/' + nrOfLetters);
-    //
     let responseWord = await response.text();
     setWord(responseWord);
   };
@@ -59,12 +54,15 @@ function FilterRandomWord() {
     const splittedWords = {
       ...enterdLetters,
     };
-    // setUserLetters(splittedWords);
-
-    console.log(typeof splittedWords);
+    for (let i = 0; i < splittedWords.length; i++) {}
     console.log(splittedWords);
   };
 
+  useEffect(() => {
+    document.value = { char };
+  });
+
+  console.log(document.value + 'hej');
   return (
     <>
       <div className="rowOfRadioBtns">
@@ -129,4 +127,4 @@ function FilterRandomWord() {
   );
 }
 
-export { FilterRandomWord };
+export { Words };
