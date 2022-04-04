@@ -1,9 +1,7 @@
 import './LettersFromUser.css';
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
 function LettersFromUser(props) {
-  // const [char, setChar] = useState('hello');
-
   const elements = [];
   // console.log(props.onSubmit);
 
