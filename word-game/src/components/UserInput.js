@@ -18,7 +18,7 @@ function UserInput(props) {
     //   'array' + Array.from(inputLetters).map((index) => index.toUpperCase())
     // );
   };
-  props.onSaveLettersData(letters);
+  // props.onSaveLettersData(letters);
 
   //tömma inputfield- l.58 adding two way binding))))**
   return (

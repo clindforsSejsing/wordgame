@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import './CtaButton.css';
 import { UsedLettersFromUser } from './UsedLettersFromUser.js';
+import { Timer } from './Timer.js';
 
 function CtaButton(props) {
   const [inputWord, setInputWord] = useState('');
   const [theSecretWord, setTheSecretWord] = useState('');
-  // const [firstGuess, setFirstGuess] = useState(null);
-  // const guessedLetters = [];
+  //const [blabla, setBlabla] = useState([]);
+
   const handleRenderLetters = async (e) => {
     let secretWord = props.word;
     let guessedWord = props.letters;
-    // let isEqual = JSON.stringify(guessedWord) === JSON.stringify(secretWord);
-    // if (isEqual) {
-    //   return <h1> Du vann! Rätt ord var{guessedWord}</h1>;
-    // }
-    //det hemliga ordet
-    console.log(secretWord + 'hello');
-    console.log(guessedWord + 'does it work now?');
-
     setInputWord(guessedWord);
     setTheSecretWord(secretWord);
   };
+  //INHÄMTA DATA FÖR ATT PASSERA TILL TIMER FÖR ATT KONTROLLERA DENS START OCH STOP FUNKTION
+  const onSaveCorrectWordDataHandler = (correctAnswer) => {
+    // const rightAnswere = {
+    //   ...correctAnswer,
+    // };
+    // console.log(rightAnswere);
+  };
 
-  const handleFirstGuess = async (e) => {};
+  const handleResult = () => {};
+
+  // const myBlablaSetter = (bla) => {
+  //   setBlabla(bla);
+  // };
 
   return (
     <>
@@ -35,10 +39,12 @@ function CtaButton(props) {
           <UsedLettersFromUser
             inputWord={inputWord}
             theSecretWord={theSecretWord}
-            onChangeHandler={handleFirstGuess}
+            onSaveCorrectWord={onSaveCorrectWordDataHandler}
+            onChange={handleResult}
           />
         </div>
       </div>
+      {/* <Timer startRender={inputWord} /> */}
     </>
   );
 }

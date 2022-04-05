@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Words.css';
 import { LettersFromUser } from './LettersFromUser.js';
+import { UsedLettersFromUser } from './UsedLettersFromUser.js';
 import { UserInput } from './UserInput.js';
+import { Timer } from './Timer.js';
 
 function Words() {
   const [word, setWord] = useState(null);
   const [nrOfLetters, setNrOfLetters] = useState(null);
   const [unic, setUnic] = useState(null);
-  const [char, setChar] = useState('hello');
 
   const handleChanger = async (e) => {
     // const response = await fetch('/api/userchoice/' + e.target.value);
@@ -20,7 +21,6 @@ function Words() {
       response = await fetch('/api/userchoice/' + e.target.value);
     }
     let responseWord = await response.text();
-    // setWord(await response.text());
     setWord(responseWord);
   };
 
@@ -50,19 +50,42 @@ function Words() {
     setWord(responseWord);
   };
 
-  const onSaveLettersDataHandler = (enterdLetters) => {
-    const splittedWords = {
-      ...enterdLetters,
-    };
-    for (let i = 0; i < splittedWords.length; i++) {}
-    console.log(splittedWords);
-  };
+  // const onSaveLettersDataHandler = (enterdLetters) => {
+  //   const splittedWords = {
+  //     ...enterdLetters,
+  //   };
+  //   for (let i = 0; i < splittedWords.length; i++) {}
+  //   // console.log(splittedWords);
+  // };
 
-  useEffect(() => {
-    document.value = { char };
-  });
-
-  console.log(document.value + 'hej');
+  if (word !== null) {
+    return (
+      <>
+        <div id="gameBox">
+          <div id="firstInput">
+            <LettersFromUser word={word} />
+          </div>
+        </div>
+        <UserInput word={word} />
+        {/* onSaveLettersData={onSaveLettersDataHandler} */}
+        <input
+          type="button"
+          value="Nytt ord"
+          id="refreshButton"
+          onClick={handleRefresh}
+        />
+        <input
+          type="checkbox"
+          value="unic"
+          id="allwords"
+          name="unic"
+          onChange={handleUnic}
+        />
+        <label htmlFor="allwords">Unika Bokstäver </label>
+        <Timer />
+      </>
+    );
+  }
   return (
     <>
       <div className="rowOfRadioBtns">
@@ -100,29 +123,7 @@ function Words() {
           name="word"
         />
         <label htmlFor="sevenletterword">Sju Bokstäver</label>
-
-        <input
-          type="checkbox"
-          value="unic"
-          id="allwords"
-          name="unic"
-          onChange={handleUnic}
-        />
-        <label htmlFor="allwords">Unika Bokstäver </label>
-
-        <input
-          type="button"
-          value="Nytt ord"
-          id="refreshButton"
-          onClick={handleRefresh}
-        />
       </div>
-      <div id="gameBox">
-        <div id="firstInput">
-          <LettersFromUser word={word} />
-        </div>
-      </div>
-      <UserInput word={word} onSaveLettersData={onSaveLettersDataHandler} />
     </>
   );
 }
