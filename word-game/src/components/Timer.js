@@ -7,12 +7,11 @@ function Timer(props) {
     let timer = setTimeout(() => {
       setCount((count) => count + 1);
     }, 1000);
-    // },
-    // [count]);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [count]);
+  }, []);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, [count]);
 
   return (
     <>

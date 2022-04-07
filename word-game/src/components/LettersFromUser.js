@@ -10,7 +10,8 @@ function LettersFromUser(props) {
       // console.log('I är: ' + i);
       elements.push(
         <li key={i} id={i} className="box">
-          {props.word[i]}
+          {/* {props.word[i]} */}
+          {[i + 1]}
         </li>
       );
     }

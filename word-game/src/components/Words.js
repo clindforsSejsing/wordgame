@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Words.css';
 import { LettersFromUser } from './LettersFromUser.js';
-import { UsedLettersFromUser } from './UsedLettersFromUser.js';
-import { UserInput } from './UserInput.js';
-import { Timer } from './Timer.js';
+// import { UsedLettersFromUser } from './UsedLettersFromUser.js';
+// import { UserInput } from './UserInput.js';
+// // import { CtaButton } from './CtaButton.js';
+// import { Timer } from './Timer.js';
 
-function Words() {
+function Words(props) {
   const [word, setWord] = useState(null);
   const [nrOfLetters, setNrOfLetters] = useState(null);
   const [unic, setUnic] = useState(null);
+  // const [letters, setLetters] = useState([]);
 
   const handleChanger = async (e) => {
     // const response = await fetch('/api/userchoice/' + e.target.value);
@@ -22,6 +24,8 @@ function Words() {
     }
     let responseWord = await response.text();
     setWord(responseWord);
+    props.changeWord(responseWord);
+    // console.log('word1: ' + responseWord);
   };
 
   const handleUnic = async (e) => {
@@ -37,6 +41,7 @@ function Words() {
 
     let responseWord = await response.text();
     setWord(responseWord);
+    props.changeWord(responseWord);
   };
 
   const handleRefresh = async (e) => {
@@ -48,44 +53,46 @@ function Words() {
     }
     let responseWord = await response.text();
     setWord(responseWord);
+    props.changeWord(responseWord);
+    console.log('nytt ord' + responseWord);
   };
 
+  // let changedHandlerWord = () => {
+  //   props.changeWord(word);
+  // };
   // const onSaveLettersDataHandler = (enterdLetters) => {
   //   const splittedWords = {
   //     ...enterdLetters,
   //   };
   //   for (let i = 0; i < splittedWords.length; i++) {}
-  //   // console.log(splittedWords);
+  //   console.log(splittedWords);
+  //   splittedWords(setLetters);
   // };
 
-  if (word !== null) {
-    return (
-      <>
-        <div id="gameBox">
-          <div id="firstInput">
-            <LettersFromUser word={word} />
-          </div>
-        </div>
-        <UserInput word={word} />
-        {/* onSaveLettersData={onSaveLettersDataHandler} */}
-        <input
-          type="button"
-          value="Nytt ord"
-          id="refreshButton"
-          onClick={handleRefresh}
-        />
-        <input
-          type="checkbox"
-          value="unic"
-          id="allwords"
-          name="unic"
-          onChange={handleUnic}
-        />
-        <label htmlFor="allwords">Unika Bokstäver </label>
-        <Timer />
-      </>
-    );
-  }
+  // const onClick = async (e) => {
+  //   setSpela('go');
+  //   console.log('hellojsan' + word);
+  //   if (spela === 'go') {
+  //     return (
+  //       <>
+  //         <div id="gameBox">
+  //           <div id="firstInput">
+  //             <LettersFromUser word={word} />
+  //           </div>
+  //         </div>
+  //         {/* <CtaButton /> */}
+  //         <UserInput word={word} />
+  //         onSaveLettersData={onSaveLettersDataHandler}
+  //         <Timer />
+  //       </>
+  //     );
+  //   }
+  // };
+  // const onStartGame = () => {
+  //   setLetters('');
+  //   onsubmit(letters);
+  // };
+
   return (
     <>
       <div className="rowOfRadioBtns">
@@ -123,6 +130,32 @@ function Words() {
           name="word"
         />
         <label htmlFor="sevenletterword">Sju Bokstäver</label>
+        <input
+          type="checkbox"
+          value="unic"
+          id="allwords"
+          name="unic"
+          onChange={handleUnic}
+        />
+        <label htmlFor="allwords">Unika Bokstäver </label>
+        <input
+          type="button"
+          value="Välj Nytt ord"
+          id="refreshButton"
+          onClick={handleRefresh}
+        />
+        <div id="gameBox">
+          <div id="firstInput">
+            <LettersFromUser word={word} />
+          </div>
+        </div>
+        {/* <input
+          type="button"
+          id="startGame"
+          // onClick={onStartGame}>
+        >
+          Spela
+        </input>*/}
       </div>
     </>
   );
