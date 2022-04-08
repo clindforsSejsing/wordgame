@@ -1,62 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserInput } from './components/UserInput.js';
 import { UsedLettersFromUser } from './components/UsedLettersFromUser.js';
 import { Words } from './components/Words';
-import { Timer } from './components/Timer.js';
+// import Clock from './components/Clock.js';
 import { StartCta } from './components/StartCta.js';
-// import { WrongWordsList } from './components/WrongWordsList';
+import { AddHighScore } from './components/AddHighScore.js';
+import { compareWords } from './compareWords.js';
+import { colorBoxFeedback } from './colorBoxFeedback.js';
+
 // import Winnings from './components/Winnings';
 
 const App = () => {
-  // const [guesses, setGuesses] = useState([]);
   const [inputText, setInputText] = useState('');
-  const [rightGuess, setRightGuess] = useState([]);
-  const [answere, setAnswere] = useState('incorrect');
-
-  //sätt gamestate till false när rätt ord gissats och timer bör även den sättas till false när den stannas
+  const [rightWord, setRightWord] = useState([]);
+  const [answere, setAnswere] = useState('false');
+  const [boxes, setBoxes] = useState([]);
+  const [guesses, setGuesses] = useState(0);
   const [game, setGame] = useState('false');
 
-  // useEffect(() => {
-  // console.log('saving');
-  // localStorage.
+  //sätt gamestate till false när rätt ord gissats och timer bör även den sättas till false när den stannas
 
-  // },[guesses])
-  // const gameHandler = () => {
-  //   setGame('true');
-  // };
   function secretWordsLetters(word) {
-    setRightGuess(word);
+    setRightWord(word);
   }
 
   function inputTextSetter(text) {
     //console.log('setting inputText to: ' + text);
-    setInputText(text);
+    const uppercaseText = text.toUpperCase();
+    setInputText(uppercaseText);
     setGame('true');
   }
+
+  function inputTextSetterOnClick(text) {
+    inputTextSetter(text);
+    if (inputText.length !== '') {
+      const comparedWordsArray = compareWords(inputText, rightWord);
+      console.log(comparedWordsArray[0]);
+
+      let tempboxes = colorBoxFeedback(
+        comparedWordsArray,
+        boxes,
+        inputText,
+        guesses
+      );
+      setBoxes(tempboxes);
+      setGuesses(guesses + 1);
+    }
+    if (answere === 'correct') {
+      // setGame('stop');
+    }
+  }
+
   function correctWordSetter(answere) {
     setAnswere(answere);
   }
-  //Sätta in kontroller i usedLetterfromUSer
+
   return (
     <>
       <div className="App">
         <h1>Wordgame</h1>
         <Words changeWord={secretWordsLetters} />
-        <UsedLettersFromUser
-          choosenLetters={inputText}
-          rightGuess={rightGuess}
-          answere={answere}
-        />
+        <UsedLettersFromUser boxesToRender={boxes} />
         <UserInput inputText={inputText} changeText={inputTextSetter} />
         <StartCta
-          buttonClick={inputTextSetter}
+          buttonClick={inputTextSetterOnClick}
           inputText={inputText}
-          rightGuess={rightGuess}
+          rightGuess={rightWord}
           correctWord={correctWordSetter}
+          game={game}
         />
-        <Timer />
+        <AddHighScore rightAnswere={answere} rightLetters={rightWord} />
       </div>
     </>
   );
 };
+
 export default App;

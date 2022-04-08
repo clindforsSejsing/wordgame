@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from 'react';
-// import './Timer.css';
+// import React, { useEffect, useState } from 'react';
+// // import './Timer.css';
 
-function Timer(props) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-  }, []);
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // }, [count]);
+// const Timer = (props) => {
+//   return <div className="time">s</div>;
+// };
 
-  return (
-    <>
-      <h1>Tid: {count} sekunder</h1>;
-    </>
-  );
-}
-export { Timer };
+// export { Timer };

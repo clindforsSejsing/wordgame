@@ -6,7 +6,7 @@
 // function CtaButton(props) {
 //   const [inputWord, setInputWord] = useState('');
 //   const [theSecretWord, setTheSecretWord] = useState('');
-//   const [blabla, setBlabla] = useState([]);
+//   ***const [blabla, setBlabla] = useState([]);
 
 //   const handleRenderLetters = async (e) => {
 //     console.log('nu');
@@ -15,19 +15,12 @@
 //     setInputWord(guessedWord);
 //     setTheSecretWord(secretWord);
 //     let arr = compareWords(guessedWord, secretWord);
+// **********
 //     setBlabla(newSuperFunction(arr, blabla, guessedWord));
-//   };
-//   //INHÄMTA DATA FÖR ATT PASSERA TILL TIMER FÖR ATT KONTROLLERA DENS START OCH STOP FUNKTION
-//   const onSaveCorrectWordDataHandler = (correctAnswer) => {
-//     // const rightAnswere = {
-//     //   ...correctAnswer,
-//     // };
-//     // console.log(rightAnswere);
+// ************
 //   };
 
-//   const handleResult = () => {};
-
-//   const myBlablaSetter = (bla) => {
+//   ***const myBlablaSetter = (bla) => {
 //     setBlabla(bla);
 //   };
 
@@ -44,7 +37,7 @@
 //             theSecretWord={theSecretWord}
 //             onSaveCorrectWord={onSaveCorrectWordDataHandler}
 //             onChange={handleResult}
-//             arrayState={blabla}
+//            *** arrayState={blabla}
 //           />
 //         </div>
 //       </div>

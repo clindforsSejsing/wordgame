@@ -11,7 +11,7 @@ function LettersFromUser(props) {
       elements.push(
         <li key={i} id={i} className="box">
           {/* {props.word[i]} */}
-          {[i + 1]}
+          {/* {[i + 1]} */}
         </li>
       );
     }
