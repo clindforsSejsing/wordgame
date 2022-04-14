@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { UserInput } from './components/UserInput.js';
 import { UsedLettersFromUser } from './components/UsedLettersFromUser.js';
 import { Words } from './components/Words';
@@ -17,6 +17,8 @@ const App = () => {
   const [boxes, setBoxes] = useState([]);
   const [guesses, setGuesses] = useState(0);
   const [game, setGame] = useState('false');
+  const [unik, setUnik] = useState('false');
+  const [time, setTime] = useState(0);
 
   //sätt gamestate till false när rätt ord gissats och timer bör även den sättas till false när den stannas
 
@@ -47,7 +49,7 @@ const App = () => {
       setGuesses(guesses + 1);
     }
     if (answere === 'correct') {
-      // setGame('stop');
+      setGame('false');
     }
   }
 
@@ -55,12 +57,28 @@ const App = () => {
     setAnswere(answere);
   }
 
+  function unikLetters(unikValue) {
+    if (game === 'true') {
+      setUnik(unikValue);
+    }
+  }
+  function timer(seconds) {
+    setTime(seconds);
+  }
+
   return (
     <>
       <div className="App">
         <h1>Wordgame</h1>
-        <Words changeWord={secretWordsLetters} />
-        <UsedLettersFromUser boxesToRender={boxes} />
+        <Words
+          changeWord={secretWordsLetters}
+          unikLettersTrueFalse={unikLetters}
+        />
+        <div id="gameBox">
+          <div id="firstInput">
+            <UsedLettersFromUser boxesToRender={boxes} />
+          </div>
+        </div>
         <UserInput inputText={inputText} changeText={inputTextSetter} />
         <StartCta
           buttonClick={inputTextSetterOnClick}
@@ -68,8 +86,16 @@ const App = () => {
           rightGuess={rightWord}
           correctWord={correctWordSetter}
           game={game}
+          getRightTime={timer}
         />
-        <AddHighScore rightAnswere={answere} rightLetters={rightWord} />
+        <AddHighScore
+          rightAnswere={answere}
+          rightLetters={rightWord}
+          nrOfGuesses={guesses}
+          nrOfBoxes={boxes}
+          unikOrNot={unik}
+          time={time}
+        />
       </div>
     </>
   );

@@ -16,7 +16,8 @@ function StartCta(props) {
   // console.log(secretWord + 'secretWord');
   let splittedWord;
   let answer;
-  let time;
+  let timeInSec = 0;
+
   // let interval = null;
   useEffect(() => {
     let interval = 0;
@@ -24,11 +25,15 @@ function StartCta(props) {
       interval = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
       }, 1000);
+      props.getRightTime(seconds);
       console.log(interval + 'intervall');
-    } else if (!isActive && seconds !== 0) {
+    } else if (!isActive && answer === 'correct') {
+      // window.alert('hi');
       clearInterval(interval);
     }
     return () => clearInterval(interval);
+    // } else if (!isActive && seconds !== 0) {
+    //   clearInterval(interval);}
   }, [isActive, seconds]);
 
   if (guessedWord !== '' && guessedWord.length === mysteryWord.length) {
@@ -40,10 +45,18 @@ function StartCta(props) {
     JSON.stringify(splittedWord) === JSON.stringify(secretWord)
   ) {
     answer = 'correct';
+    // setIsActive(!isActive);
   } else answer = 'incorrect';
 
+  //  function toggle() {
+  //    setIsActive(!isActive);
+  //  }
   function toggle() {
-    setIsActive(!isActive);
+    if (answer === 'correct') {
+      setIsActive(false);
+    } else {
+      setIsActive(true);
+    }
   }
   const clickChangeText = () => {
     toggle();
@@ -70,9 +83,7 @@ function StartCta(props) {
         onClick={clickChangeText}
       />
       <h2>{message}</h2>
-      <div className="time">
-        {seconds}s{time}
-      </div>
+      <div className="time">{seconds} s</div>
     </>
   );
 }

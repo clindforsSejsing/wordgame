@@ -10,10 +10,17 @@ function Words(props) {
   const [word, setWord] = useState(null);
   const [nrOfLetters, setNrOfLetters] = useState(null);
   const [unic, setUnic] = useState(null);
-  // const [letters, setLetters] = useState([]);
+  let unikValue;
+  useEffect(() => {
+    if (unic === true) {
+      unikValue = 'Ja';
+    } else {
+      unikValue = 'Nej';
+    }
+    props.unikLettersTrueFalse(unikValue);
+  });
 
   const handleChanger = async (e) => {
-    // const response = await fetch('/api/userchoice/' + e.target.value);
     setNrOfLetters(e.target.value);
 
     let response;
@@ -36,6 +43,7 @@ function Words(props) {
       response = await fetch('/api/userchoice/' + nrOfLetters);
     } else {
       setUnic(true);
+      unikValue = 'Nej';
       response = await fetch('/api/userchoice/' + nrOfLetters + '/unic?');
     }
 
@@ -44,54 +52,21 @@ function Words(props) {
     props.changeWord(responseWord);
   };
 
-  const handleRefresh = async (e) => {
+  const handleUnikLetters = async (e) => {
     let response;
     if (unic) {
       response = await fetch('/api/userchoice/' + nrOfLetters + '/unic?');
+      // unikValue = 'Ja';
     } else {
       response = await fetch('/api/userchoice/' + nrOfLetters);
+      // unikValue = 'Nej';
     }
     let responseWord = await response.text();
     setWord(responseWord);
     props.changeWord(responseWord);
+    // props.unikLettersTrueFalse(unikValue);
     console.log('nytt ord' + responseWord);
   };
-
-  // let changedHandlerWord = () => {
-  //   props.changeWord(word);
-  // };
-  // const onSaveLettersDataHandler = (enterdLetters) => {
-  //   const splittedWords = {
-  //     ...enterdLetters,
-  //   };
-  //   for (let i = 0; i < splittedWords.length; i++) {}
-  //   console.log(splittedWords);
-  //   splittedWords(setLetters);
-  // };
-
-  // const onClick = async (e) => {
-  //   setSpela('go');
-  //   console.log('hellojsan' + word);
-  //   if (spela === 'go') {
-  //     return (
-  //       <>
-  //         <div id="gameBox">
-  //           <div id="firstInput">
-  //             <LettersFromUser word={word} />
-  //           </div>
-  //         </div>
-  //         {/* <CtaButton /> */}
-  //         <UserInput word={word} />
-  //         onSaveLettersData={onSaveLettersDataHandler}
-  //         <Timer />
-  //       </>
-  //     );
-  //   }
-  // };
-  // const onStartGame = () => {
-  //   setLetters('');
-  //   onsubmit(letters);
-  // };
 
   return (
     <>
@@ -142,7 +117,7 @@ function Words(props) {
           type="button"
           value="Välj Nytt ord"
           id="refreshButton"
-          onClick={handleRefresh}
+          onClick={handleUnikLetters}
         />
         <div id="gameBox">
           <div id="firstInput">
