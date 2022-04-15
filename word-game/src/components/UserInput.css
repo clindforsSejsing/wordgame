@@ -1,9 +1,10 @@
 .input__field {
+  width: 15em;
+  font-size: 20px;
+  border: 1.2px solid rgb(141, 141, 52);
+  border-radius: 5px;
+  margin-left: 10.8em;
+  margin-top: 2em;
+  padding: 12px;
   text-transform: uppercase;
-}
-.btn__Guess {
-  background-color: aquamarine;
-}
-.user__input {
-  margin-left: 21em;
 }

@@ -19,9 +19,20 @@ function AddHighScore(props) {
         <p>Antal gissningar: {amountOfGuesses} </p>
         <p>Antal bokstäver: {theRightWord.length} </p>
         <p>Unika bokstäver: {unikSetting}</p>
-        <p>Spara mitt resultat i Highscore-listan:</p>
-        <input type="text" placeholder="Namn"></input>
-        <button type="submit">Spara</button>
+        <div className="addTo__highscore">
+          <h2 className="text__smallHeader">
+            Spara mitt resultat i Highscore-listan:
+          </h2>
+          <label htmlFor="name"></label>
+          <input
+            type="text"
+            className="name__inputField"
+            placeholder="Namn"
+          ></input>
+          <button type="submit" className="submit__btn">
+            Spara
+          </button>
+        </div>
       </>
     );
   } else {

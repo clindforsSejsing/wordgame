@@ -7,8 +7,11 @@ import { StartCta } from './components/StartCta.js';
 import { AddHighScore } from './components/AddHighScore.js';
 import { compareWords } from './compareWords.js';
 import { colorBoxFeedback } from './colorBoxFeedback.js';
+import './App.css';
 
 // import Winnings from './components/Winnings';
+
+//FELKONTROLLER KVAR!!!**************** å STYLING
 
 const App = () => {
   const [inputText, setInputText] = useState('');
@@ -35,7 +38,7 @@ const App = () => {
 
   function inputTextSetterOnClick(text) {
     inputTextSetter(text);
-    if (inputText.length !== '') {
+    if (inputText.length == rightWord.length) {
       const comparedWordsArray = compareWords(inputText, rightWord);
       console.log(comparedWordsArray[0]);
 
@@ -74,8 +77,8 @@ const App = () => {
           changeWord={secretWordsLetters}
           unikLettersTrueFalse={unikLetters}
         />
-        <div id="gameBox">
-          <div id="firstInput">
+        <div id="gameBoxTwo">
+          <div id="second__Input">
             <UsedLettersFromUser boxesToRender={boxes} />
           </div>
         </div>

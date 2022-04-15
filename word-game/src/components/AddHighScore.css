@@ -1,0 +1,53 @@
+p {
+  font-size: 1.8em;
+  font-family: 'Dancing Script', cursive;
+  /* margin-left: 35%;
+  margin-right: 35%;
+  padding: 0.2em; */
+  background-color: #a892ee;
+  padding: 0.3rem;
+  margin: 1.5rem auto;
+  width: 50rem;
+  max-width: 95%;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+.addTo__highscore {
+  background-color: rgb(247, 217, 234);
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 50rem;
+  font-family: 'Dancing Script';
+  font-weight: lighter;
+  font-size: 13px;
+  max-width: 95%;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+.name__inputField {
+  width: 15em;
+  font-size: 20px;
+  border: 1.2px solid rgb(141, 141, 52);
+  border-radius: 5px;
+  margin-left: 1em;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+.submit__btn {
+  background-color: rgb(9, 245, 226);
+  border: 1px solid #ececec;
+  box-shadow: 2px 4px #b3b3bb;
+  border-radius: 35px;
+  margin-left: 1.5em;
+  padding: 1.5em;
+}
+.submit__btn:hover {
+  color: grey;
+}
+.text__smallHeader {
+  margin-top: 1em;
+  margin-bottom: -0.5em;
+  margin-left: -4em;
+}

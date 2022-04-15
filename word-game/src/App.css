@@ -1,0 +1,28 @@
+#gameBoxTwo {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+div#second__Input {
+  margin-left: 12em;
+  padding: 1rem;
+}
+
+#second__Input li {
+  align-items: center;
+  border: 2px solid gray;
+  background-color: rgb(254, 255, 255);
+  border-radius: 3px;
+  box-shadow: 5px 10px #e3e0e0;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2em;
+  font-weight: bold;
+  height: 0.2em;
+  margin: 0.2em;
+  padding: 1em;
+  width: 0.2em;
+}

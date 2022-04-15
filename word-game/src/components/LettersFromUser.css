@@ -1,17 +1,22 @@
 #gameBox {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: row;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
 }
-#firstInput {
+#first__Input {
   margin-left: 19.5em;
   padding: 1rem;
 }
-#firstInput li {
+#first__input li {
   border: 2px solid gray;
   border-radius: 3px;
+  background-color: rgb(189, 244, 244);
+  box-shadow: 5px 10px #e3e0e0;
+  color: black;
   margin: 0.2em;
-  font-size: 2.5rem;
+  font-size: 2em;
   font-weight: 700;
   height: 0.2em;
   width: 0.2em;
@@ -19,5 +24,5 @@
   flex-direction: row;
   align-items: center;
   float: left;
-  padding: 1rem;
+  padding: 1em;
 }

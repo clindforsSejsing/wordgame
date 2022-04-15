@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Words.css';
 import { LettersFromUser } from './LettersFromUser.js';
-// import { UsedLettersFromUser } from './UsedLettersFromUser.js';
-// import { UserInput } from './UserInput.js';
-// // import { CtaButton } from './CtaButton.js';
-// import { Timer } from './Timer.js';
 
 function Words(props) {
   const [word, setWord] = useState(null);
   const [nrOfLetters, setNrOfLetters] = useState(null);
   const [unic, setUnic] = useState(null);
   let unikValue;
+
   useEffect(() => {
     if (unic === true) {
       unikValue = 'Ja';
@@ -50,22 +47,6 @@ function Words(props) {
     let responseWord = await response.text();
     setWord(responseWord);
     props.changeWord(responseWord);
-  };
-
-  const handleUnikLetters = async (e) => {
-    let response;
-    if (unic) {
-      response = await fetch('/api/userchoice/' + nrOfLetters + '/unic?');
-      // unikValue = 'Ja';
-    } else {
-      response = await fetch('/api/userchoice/' + nrOfLetters);
-      // unikValue = 'Nej';
-    }
-    let responseWord = await response.text();
-    setWord(responseWord);
-    props.changeWord(responseWord);
-    // props.unikLettersTrueFalse(unikValue);
-    console.log('nytt ord' + responseWord);
   };
 
   return (
@@ -113,24 +94,17 @@ function Words(props) {
           onChange={handleUnic}
         />
         <label htmlFor="allwords">Unika Bokstäver </label>
-        <input
+        {/* <input
           type="button"
           value="Välj Nytt ord"
           id="refreshButton"
           onClick={handleUnikLetters}
-        />
+        /> */}
         <div id="gameBox">
-          <div id="firstInput">
+          <div id="first__input">
             <LettersFromUser word={word} />
           </div>
         </div>
-        {/* <input
-          type="button"
-          id="startGame"
-          // onClick={onStartGame}>
-        >
-          Spela
-        </input>*/}
       </div>
     </>
   );

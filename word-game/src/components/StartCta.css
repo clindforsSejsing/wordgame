@@ -1,0 +1,23 @@
+#start__game {
+  background-color: rgb(231, 252, 3);
+  border: 1px solid #ececec;
+  box-shadow: 2px 4px #b3b3bb;
+  border-radius: 35px;
+  font-weight: bolder;
+  margin-left: 0.5em;
+  padding: 1.5em;
+}
+#start__game:hover {
+  color: grey;
+}
+.message {
+  font-family: 'Dancing Script', cursive;
+  font-size: 45px;
+  margin-left: 10em;
+}
+.time {
+  font-size: 35px;
+  font-family: 'Dancing Script', cursive;
+  margin-top: -2.3em;
+  margin-left: 2em;
+}
