@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 import { UserInput } from './components/UserInput.js';
 import { UsedLettersFromUser } from './components/UsedLettersFromUser.js';
 import { Words } from './components/Words';
-// import Clock from './components/Clock.js';
 import { StartCta } from './components/StartCta.js';
 import { AddHighScore } from './components/AddHighScore.js';
 import { compareWords } from './compareWords.js';
 import { colorBoxFeedback } from './colorBoxFeedback.js';
 import './App.css';
-
-// import Winnings from './components/Winnings';
-
-//FELKONTROLLER KVAR!!!**************** å STYLING
 
 const App = () => {
   const [inputText, setInputText] = useState('');
@@ -30,7 +25,6 @@ const App = () => {
   }
 
   function inputTextSetter(text) {
-    //console.log('setting inputText to: ' + text);
     const uppercaseText = text.toUpperCase();
     setInputText(uppercaseText);
     setGame('true');
@@ -72,7 +66,17 @@ const App = () => {
   return (
     <>
       <div className="App">
-        <h1>Wordgame</h1>
+        <a href="" id="game__rules">
+          {' '}
+          * Hur man spelar
+        </a>
+        <a href="" id="high__score">
+          * Highscore-lista
+        </a>
+        <a href="" id="new__game">
+          * Starta Nytt Spel
+        </a>
+        <h1 className="header">Wordgame</h1>
         <Words
           changeWord={secretWordsLetters}
           unikLettersTrueFalse={unikLetters}
@@ -100,6 +104,7 @@ const App = () => {
           time={time}
         />
       </div>
+      <p id="footer">@CLS 2022-04-16</p>
     </>
   );
 };

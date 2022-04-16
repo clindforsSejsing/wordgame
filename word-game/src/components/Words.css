@@ -2,7 +2,16 @@
 
 .rowOfRadioBtns {
   font-family: 'Dancing Script', cursive;
-  margin-left: 15%;
+  margin-left: 21em;
   padding: 1em;
-  text-align: center;
+}
+
+#gameBox1 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Dancing Script', cursive;
+  margin-bottom: 1.5em;
+  margin-left: 28em;
+  margin-top: 2em;
 }

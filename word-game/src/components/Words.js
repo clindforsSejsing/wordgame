@@ -94,16 +94,10 @@ function Words(props) {
           onChange={handleUnic}
         />
         <label htmlFor="allwords">Unika Bokstäver </label>
-        {/* <input
-          type="button"
-          value="Välj Nytt ord"
-          id="refreshButton"
-          onClick={handleUnikLetters}
-        /> */}
-        <div id="gameBox">
-          <div id="first__input">
-            <LettersFromUser word={word} />
-          </div>
+      </div>
+      <div id="gameBox1">
+        <div id="first__input">
+          <LettersFromUser word={word} />
         </div>
       </div>
     </>

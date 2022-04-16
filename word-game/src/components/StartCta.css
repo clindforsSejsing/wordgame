@@ -14,10 +14,12 @@
   font-family: 'Dancing Script', cursive;
   font-size: 45px;
   margin-left: 10em;
+  margin-top: -1em;
+  padding: 1px;
 }
 .time {
   font-size: 35px;
   font-family: 'Dancing Script', cursive;
-  margin-top: -2.3em;
-  margin-left: 2em;
+  margin-top: -2.6em;
+  margin-left: 9em;
 }
