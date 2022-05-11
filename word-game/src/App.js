@@ -17,6 +17,7 @@ const App = () => {
   const [game, setGame] = useState('false');
   const [unik, setUnik] = useState('false');
   const [time, setTime] = useState(0);
+  const [rules, setRules] = useState('');
 
   //sätt gamestate till false när rätt ord gissats och timer bör även den sättas till false när den stannas
 
@@ -32,7 +33,7 @@ const App = () => {
 
   function inputTextSetterOnClick(text) {
     inputTextSetter(text);
-    if (inputText.length == rightWord.length) {
+    if (inputText.length === rightWord.length) {
       const comparedWordsArray = compareWords(inputText, rightWord);
       console.log(comparedWordsArray[0]);
 
@@ -62,20 +63,31 @@ const App = () => {
   function timer(seconds) {
     setTime(seconds);
   }
-
+  // async function GameRulesHandler() {
+  //   const rule = await fetch('rules');
+  //   // console.log(rule + 'rules');
+  //   // return { rule };
+  //   // window.location.href = '../rules';
+  //   setRules(rule);
+  // }
+  // async function rulesPage() {
+  //   await fetch('/rules');
+  //   console.log(rulesPage + 'rules');
+  // }
+  function rulesPage() {
+    window.location.href = 'http://localhost:5080/rules';
+    // fetch('/rules');
+  }
   return (
     <>
       <div className="App">
-        <a href="" id="game__rules">
-          {' '}
-          * Hur man spelar
-        </a>
-        <a href="" id="high__score">
-          * Highscore-lista
-        </a>
-        <a href="" id="new__game">
-          * Starta Nytt Spel
-        </a>
+        {/* <GameRules /> */}
+        <nav>
+          <button id="game__rules" onClick={rulesPage}>
+            Spelregler
+          </button>
+          <button id="high__score">Highscore-lista</button>
+        </nav>
         <h1 className="header">Wordgame</h1>
         <Words
           changeWord={secretWordsLetters}

@@ -37,7 +37,7 @@ export function colorBoxFeedback(
       );
     }
 
-    if (c == comparedWordsArray.length - 1) {
+    if (c === comparedWordsArray.length - 1) {
       let keyNr = c + 1;
       letterArr.push(<br key={guesses + '' + keyNr}></br>);
     }

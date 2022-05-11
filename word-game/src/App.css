@@ -34,15 +34,17 @@ div#second__Input {
 
 a {
   margin-left: 5em;
+  padding-right: 1em;
 }
 #game__rules {
-  margin-left: 23em;
+  margin-left: 35em;
 }
 #footer {
-  background-color: rgb(189, 244, 244);
+  background-color: rgb(237, 246, 246);
   font-size: 18px;
-  margin-top: 12em;
+  margin-top: 16em;
+  margin-left: 30em;
   height: 1.3em;
-  width: 50%;
+  width: 12%;
   text-align: center;
 }

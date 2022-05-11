@@ -1,6 +1,6 @@
 import app from './src/app.js';
 import mongoose from 'mongoose';
-const port = 5081;
+const port = 5080;
 
 app.listen(port, () => {
   console.log(`app is listening to ${port}`);
@@ -34,7 +34,7 @@ async function run() {
     Unik: 'nej',
     Name: 'John Doe',
   });
-  player.save().then(() => console.log('saved'));
+  // player.save().then(() => console.log('saved'));
   // const kitty2 = new Cat({ name: 'Luna' });
   // kitty2.save().then(() => console.log('meow'));
 
@@ -42,6 +42,6 @@ async function run() {
   console.log(highscore);
 }
 
-run();
+// run();
 // const user = highscores.find();
 // console.log(user);

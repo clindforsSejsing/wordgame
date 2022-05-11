@@ -5,11 +5,12 @@ import routes from '../routes/routes.js';
 const app = express();
 
 app.use('/', routes);
-app.use('/test', routes);
+app.use('/rules', routes);
 app.use('/api/userchoice', routes);
 app.use('/api/userchoice/:id', routes);
 app.use('/api/userchoice/:id/unic?', routes);
+app.use('/highscore', routes);
 
-// app.use("/src", express.static("./src"));
+app.use(express.static('..word-game/build'));
 
 export default app;

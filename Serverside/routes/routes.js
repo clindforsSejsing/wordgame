@@ -1,9 +1,14 @@
-import express from 'express';
+import express, { response } from 'express';
 import { secretWords } from '../src/api.js';
 import { sortWords } from './sortWords.js';
 import { sortUnicWords } from './sortUnicWords.js';
+import fs from 'fs/promises';
+import app from '../src/app.js';
 
 const routes = express.Router();
+
+routes.use(express.static('./static'));
+routes.use('./static/rules1.png', express.static('images'));
 
 routes.get('/', (req, res) => {
   res.status(200).send('startside');
@@ -38,8 +43,19 @@ routes.get('/api/userchoice/:id/unic?', async (req, res) => {
   res.status(200).send(unicLetters);
 });
 
-routes.get('/test', (req, res) => {
-  res.send('/test just an exampel here');
+const infoPage = fs.readFile('./static/rules.html', 'utf-8', 'html', 'css');
+
+routes.get('/rules', async (req, res) => {
+  res.send(await infoPage);
+});
+
+routes.post('/highscore'),
+  async (req, res) => {
+    res.send();
+  };
+
+routes.get('/highscore', async (req, res) => {
+  res.render('highscore');
 });
 
 export default routes;

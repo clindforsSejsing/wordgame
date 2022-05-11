@@ -8,8 +8,16 @@ function AddHighScore(props) {
   const timeResult = props.time;
   console.log(unikSetting + 'hello');
 
-  // console.log(theRightWord + 'hello');
-  // console.log(rightAnswereResult);
+  // const sendHighscore {
+
+  //   player :{
+  //     "tid": {timeResult},
+  //     "gissningar" : {amountOfGuesses},
+  //     "letters" : {theRightWord.length},
+  //     "unik" : {unikSetting},
+  //     "namn" : {name}
+  //   }
+  // }
 
   if (rightAnswereResult === 'correct') {
     return (
@@ -29,7 +37,11 @@ function AddHighScore(props) {
             className="name__inputField"
             placeholder="Namn"
           ></input>
-          <button type="submit" className="submit__btn">
+          <button
+            type="submit"
+            // onSubmit={sendHighscore}
+            className="submit__btn"
+          >
             Spara
           </button>
         </div>
