@@ -5,10 +5,7 @@ const port = 5080;
 app.listen(port, () => {
   console.log(`app is listening to ${port}`);
 });
-// mongoose.connect('mongodb://localhost:2707/sample_airbnb.highscores');
-mongoose.connect(
-  'mongodb+srv://CLS:sEZZ8G4oa0ZweRfH@cluster0.b1tyo.mongodb.net/highscores__wordgame'
-);
+
 // const Cat = mongoose.model('Cat', { name: String });
 
 // const kitty2 = new Cat({ name: 'Luna' });
