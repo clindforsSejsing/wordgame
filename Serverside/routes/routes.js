@@ -4,6 +4,10 @@ import { sortWords } from './sortWords.js';
 import { sortUnicWords } from './sortUnicWords.js';
 import fs from 'fs/promises';
 import app from '../src/app.js';
+import mongoose from 'mongoose';
+
+// import { AddHighScore } from '../../word-game/src/components/AddHighScore.js'; //have to make db-connection. Style with tailwind.
+import highscoreSchema from '../src/model.js';
 
 const routes = express.Router();
 
@@ -49,13 +53,30 @@ routes.get('/rules', async (req, res) => {
   res.send(await infoPage);
 });
 
-routes.post('/highscore'),
+const highModel = mongoose.model('highModel', highscoreSchema);
+
+routes.post('/api/highscore'),
   async (req, res) => {
-    res.send();
+    const data = new highModel({
+      time: req.body.time,
+      guesses: req.body.guesses,
+      letters: req.body.letters,
+      unik: req.body.unik,
+      username: req.body.username,
+    });
+
+    try {
+      const dataToSave = data.save();
+      res.status(200).json(dataToSave);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+    // res.send(dataToSave);
   };
 
-routes.get('/highscore', async (req, res) => {
-  res.render('highscore');
+routes.get('/api/highscore', async (req, res) => {
+  // res.render('highscore');
+  res.send('this is where highscores end up');
 });
 
 export default routes;
