@@ -17,7 +17,6 @@ const App = () => {
   const [game, setGame] = useState('false');
   const [unik, setUnik] = useState('false');
   const [time, setTime] = useState(0);
-  const [rules, setRules] = useState('');
 
   //sätt gamestate till false när rätt ord gissats och timer bör även den sättas till false när den stannas
 
@@ -35,7 +34,7 @@ const App = () => {
     inputTextSetter(text);
     if (inputText.length === rightWord.length) {
       const comparedWordsArray = compareWords(inputText, rightWord);
-      console.log(comparedWordsArray[0]);
+      // console.log(comparedWordsArray[0]);
 
       let tempboxes = colorBoxFeedback(
         comparedWordsArray,

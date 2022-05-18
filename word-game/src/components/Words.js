@@ -29,11 +29,9 @@ function Words(props) {
     let responseWord = await response.text();
     setWord(responseWord);
     props.changeWord(responseWord);
-    // console.log('word1: ' + responseWord);
   };
 
   const handleUnic = async (e) => {
-    console.log('word: ' + (await word));
     let response;
     if (unic) {
       setUnic(false);

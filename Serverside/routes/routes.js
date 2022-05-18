@@ -1,12 +1,11 @@
-import express, { response } from 'express';
+import express from 'express';
 import { secretWords } from '../src/api.js';
 import { sortWords } from './sortWords.js';
 import { sortUnicWords } from './sortUnicWords.js';
 import fs from 'fs/promises';
-import app from '../src/app.js';
 import mongoose from 'mongoose';
+import database from '../server.js';
 
-// import { AddHighScore } from '../../word-game/src/components/AddHighScore.js'; //have to make db-connection. Style with tailwind.
 import highscoreSchema from '../src/model.js';
 
 const routes = express.Router();
@@ -27,23 +26,18 @@ routes.get('/api/userchoice', async (req, res) => {
 });
 
 routes.get('/api/userchoice/:id', async (req, res) => {
-  // console.log(req.params.id);
   const nrOfLettersWord = sortWords(await secretWords(), req.params.id);
-  // console.log('a' + nrOfLettersWord + 'a');
   res.status(200).send(await nrOfLettersWord);
 });
 
 //if user chooses api/userchoice/1/unic? random unic word pops
 routes.get('/api/userchoice/:id/unic?', async (req, res) => {
   let unicLetters = sortWords(await secretWords(), req.params.id);
-  // console.log('unicLetters' + unicLetters);
-  // const sortUnicLetters = sortUnicWords(await unicLetters);
   let isUnice = sortUnicWords(unicLetters);
   while (!isUnice) {
     unicLetters = sortWords(await secretWords(), req.params.id);
     isUnice = sortUnicWords(unicLetters);
   }
-  // console.log('unicLetters' + unicLetters);
   res.status(200).send(unicLetters);
 });
 
@@ -53,30 +47,33 @@ routes.get('/rules', async (req, res) => {
   res.send(await infoPage);
 });
 
-const highModel = mongoose.model('highModel', highscoreSchema);
+const highscores = mongoose.model('highscores', highscoreSchema);
 
-routes.post('/api/highscore'),
-  async (req, res) => {
-    const data = new highModel({
+routes.post('/api/highscores', async (req, res) => {
+  try {
+    database;
+    const data = new highscores({
       time: req.body.time,
       guesses: req.body.guesses,
       letters: req.body.letters,
       unik: req.body.unik,
       username: req.body.username,
     });
+    data.save();
+    const payload = await highscores.find();
+    res.json(payload);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
-    try {
-      const dataToSave = data.save();
-      res.status(200).json(dataToSave);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-    // res.send(dataToSave);
-  };
-
-routes.get('/api/highscore', async (req, res) => {
-  // res.render('highscore');
-  res.send('this is where highscores end up');
+routes.get('/api/highscores', async (req, res) => {
+  try {
+    const data = await highscores.find();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 export default routes;

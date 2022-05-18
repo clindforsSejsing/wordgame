@@ -3,29 +3,37 @@ import React, { useState } from 'react';
 
 function AddHighScore(props) {
   const [userName, setUsername] = useState('');
+  const [savedMessage, setSavedMessage] = useState('');
   const rightAnswereResult = props.rightAnswere;
   const theRightWord = props.rightLetters;
   const amountOfGuesses = props.nrOfGuesses;
   const unikSetting = props.unikOrNot;
   const timeResult = props.time;
-  console.log(unikSetting + 'hello');
 
   const sendHighscore = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/highscore', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        time: timeResult,
-        guesses: amountOfGuesses,
-        letters: theRightWord,
-        unik: unikSetting,
-        username: userName,
-      }),
-    });
-    console.log(response);
+    try {
+      const response = await fetch('http://localhost:5080/api/highscores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          time: timeResult,
+          guesses: amountOfGuesses,
+          letters: theRightWord.length,
+          unik: unikSetting,
+          username: userName,
+        }),
+      });
+    } catch (e) {}
+  };
+
+  const handlerBtn = () => {
+    if (userName !== '') {
+      console.log('gul bil');
+      setSavedMessage('Ditt resultat är nu sparat!');
+    }
   };
 
   if (rightAnswereResult === 'correct') {
@@ -43,17 +51,18 @@ function AddHighScore(props) {
             </h2>
             <label htmlFor="name"></label>
             <input
-              id="username"
+              value={userName}
               type="text"
               className="name__inputField"
               placeholder="Namn"
               onChange={(e) => setUsername(e.target.value)}
             ></input>
-            <button type="submit" className="submit__btn">
+            <button type="submit" onClick={handlerBtn} className="submit__btn">
               Spara
             </button>
           </div>
         </form>
+        <h2 className="message">{savedMessage}</h2>
       </>
     );
   } else {

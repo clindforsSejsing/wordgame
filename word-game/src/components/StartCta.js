@@ -7,6 +7,7 @@ function StartCta(props) {
 
   const mysteryWord = props.rightGuess;
   const guessedWord = props.inputText;
+
   //collect the guessed word and the right word- compare and return true or false depending on result.
 
   const secretWord = Array.from(mysteryWord);
