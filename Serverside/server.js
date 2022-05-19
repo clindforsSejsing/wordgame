@@ -1,6 +1,6 @@
 import app from './src/app.js';
 import 'dotenv/config';
-const port = process.env.PORT;
+const port = process.env.PORT || 5080;
 
 import mongoose from 'mongoose';
 
@@ -15,5 +15,3 @@ if (!mongoString) {
 app.listen(port, () => {
   console.log(`app is listening to ${port}`);
 });
-
-export default database;

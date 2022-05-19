@@ -4,7 +4,6 @@ import { sortWords } from './sortWords.js';
 import { sortUnicWords } from './sortUnicWords.js';
 import fs from 'fs/promises';
 import mongoose from 'mongoose';
-import database from '../server.js';
 
 import highscoreSchema from '../src/model.js';
 
@@ -15,10 +14,6 @@ routes.use('./static/rules1.png', express.static('images'));
 
 routes.get('/', (req, res) => {
   res.status(200).send('startside');
-});
-
-routes.post('/', (req, res) => {
-  res.send('you can now post to this endpoint...');
 });
 
 routes.get('/api/userchoice', async (req, res) => {
@@ -51,7 +46,6 @@ const highscores = mongoose.model('highscores', highscoreSchema);
 
 routes.post('/api/highscores', async (req, res) => {
   try {
-    database;
     const data = new highscores({
       time: req.body.time,
       guesses: req.body.guesses,
@@ -74,6 +68,10 @@ routes.get('/api/highscores', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+});
+
+routes.get('/highscores/', async (req, res) => {
+  res.send('here is highscore shown ');
 });
 
 export default routes;

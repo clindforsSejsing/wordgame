@@ -56,6 +56,7 @@ function AddHighScore(props) {
               className="name__inputField"
               placeholder="Namn"
               onChange={(e) => setUsername(e.target.value)}
+              required
             ></input>
             <button type="submit" onClick={handlerBtn} className="submit__btn">
               Spara
