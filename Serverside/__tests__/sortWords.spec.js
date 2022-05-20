@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { sortWords } from '../routes/sortWords';
+import { sortWords } from '../files/sortWords';
 
 test('Users clicks to set a randomised word of four letters', () => {
   expect(sortWords(['LÅSKOLV', 'NYCKEL', 'LÅSA', 'TRE'], 4)).toBe('LÅSA');

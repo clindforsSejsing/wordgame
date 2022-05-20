@@ -18,8 +18,6 @@ const App = () => {
   const [unik, setUnik] = useState('false');
   const [time, setTime] = useState(0);
 
-  //sätt gamestate till false när rätt ord gissats och timer bör även den sättas till false när den stannas
-
   function secretWordsLetters(word) {
     setRightWord(word);
   }
@@ -34,7 +32,6 @@ const App = () => {
     inputTextSetter(text);
     if (inputText.length === rightWord.length) {
       const comparedWordsArray = compareWords(inputText, rightWord);
-      // console.log(comparedWordsArray[0]);
 
       let tempboxes = colorBoxFeedback(
         comparedWordsArray,
@@ -62,25 +59,13 @@ const App = () => {
   function timer(seconds) {
     setTime(seconds);
   }
-  // async function GameRulesHandler() {
-  //   const rule = await fetch('rules');
-  //   // console.log(rule + 'rules');
-  //   // return { rule };
-  //   // window.location.href = '../rules';
-  //   setRules(rule);
-  // }
-  // async function rulesPage() {
-  //   await fetch('/rules');
-  //   console.log(rulesPage + 'rules');
-  // }
+
   function rulesPage() {
     window.location.href = 'http://localhost:5080/rules';
-    // fetch('/rules');
   }
   return (
     <>
       <div className="App">
-        {/* <GameRules /> */}
         <nav>
           <button id="game__rules" onClick={rulesPage}>
             Spelregler

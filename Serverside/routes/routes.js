@@ -1,13 +1,30 @@
 import express from 'express';
-import { secretWords } from '../src/api.js';
-import { sortWords } from './sortWords.js';
-import { sortUnicWords } from './sortUnicWords.js';
+import { sortWords } from '../files/sortWords.js';
+import { sortUnicWords } from '../files/sortUnicWords.js';
+import { sortHighscore } from '../files/sortHighscore.js';
+
 import fs from 'fs/promises';
 import mongoose from 'mongoose';
-
-import highscoreSchema from '../src/model.js';
+import highscoreSchema from '../files/model.js';
+import { getHighscores, secretWords } from '../src/fetch.js';
 
 const routes = express.Router();
+const highscores = mongoose.model('highscores', highscoreSchema);
+
+routes.get('/', async (req, res) => {
+  const list = await getHighscores();
+  const temp = sortHighscore();
+  let users;
+  try {
+    list.forEach((user) => {
+      users = user;
+      // console.log(user);
+    });
+    res.render('highscores', { list });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+});
 
 routes.use(express.static('./static'));
 routes.use('./static/rules1.png', express.static('images'));
@@ -42,16 +59,16 @@ routes.get('/rules', async (req, res) => {
   res.send(await infoPage);
 });
 
-const highscores = mongoose.model('highscores', highscoreSchema);
-
 routes.post('/api/highscores', async (req, res) => {
   try {
     const data = new highscores({
-      time: req.body.time,
-      guesses: req.body.guesses,
-      letters: req.body.letters,
-      unik: req.body.unik,
-      username: req.body.username,
+      user: {
+        time: req.body.time,
+        guesses: req.body.guesses,
+        letters: req.body.letters,
+        unik: req.body.unik,
+        username: req.body.username,
+      },
     });
     data.save();
     const payload = await highscores.find();
@@ -68,10 +85,6 @@ routes.get('/api/highscores', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-});
-
-routes.get('/highscores/', async (req, res) => {
-  res.send('here is highscore shown ');
 });
 
 export default routes;

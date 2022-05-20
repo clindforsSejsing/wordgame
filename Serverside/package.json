@@ -2,7 +2,7 @@
   "name": "serverside",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./src/server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon .",
@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.3",
+    "express-handlebars": "^6.0.6",
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.0",
     "node-fetch": "^3.2.3"

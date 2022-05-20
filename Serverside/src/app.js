@@ -1,8 +1,12 @@
 import express from 'express';
 import routes from '../routes/routes.js';
 import cors from 'cors';
+import { engine } from 'express-handlebars';
 
 const app = express();
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 app.use(express.json());
 app.use(
@@ -19,6 +23,7 @@ app.use('/api/userchoice/:id', routes);
 app.use('/api/userchoice/:id/unic?', routes);
 app.use('/highscores', routes);
 app.use('/api/highscores', routes);
+app.use('/highscores', routes);
 
 app.use(express.static('..word-game/build'));
 

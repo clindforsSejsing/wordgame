@@ -1,0 +1,15 @@
+<h1>Highscore-listan🥳</h1>
+
+
+<ol class="gradient-list">
+    {{#each list}}
+    <li>
+        <p>Namn: {{this.user.username}}</p>
+        <p>Tid i sekunder: {{this.user.time}}</p>
+        </p>Antal Bokstäver: {{this.user.letters}}</p>
+        </p>Var bokstäverna unika: {{this.user.unik}}</p>
+        </p>Antal gissningar: {{this.user.guesses}}</p>
+        
+    </li>
+    {{/each}}
+</ol>

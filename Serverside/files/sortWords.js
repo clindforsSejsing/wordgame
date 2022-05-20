@@ -1,6 +1,5 @@
 function sortWords(listOfWords, nrOfLetters) {
   let wordArray = listOfWords;
-  //   console.log('word: ' + wordArray);
 
   if (nrOfLetters == 4) {
     wordArray = wordArray.filter(filter4Words);
