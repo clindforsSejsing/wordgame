@@ -6,7 +6,7 @@ import { StartCta } from './components/StartCta.js';
 import { AddHighScore } from './components/AddHighScore.js';
 import { compareWords } from './compareWords.js';
 import { colorBoxFeedback } from './colorBoxFeedback.js';
-import './App.css';
+import './assets/main.css';
 
 const App = () => {
   const [inputText, setInputText] = useState('');
@@ -63,16 +63,31 @@ const App = () => {
   function rulesPage() {
     window.location.href = 'http://localhost:5080/rules';
   }
+  function highscorePage() {
+    window.location.href = 'http://localhost:5080/highscores';
+  }
   return (
+    //  flex items-center justify-center h-screen
     <>
-      <div className="App">
+      <div className="rounded shadow-lg p-10">
         <nav>
-          <button id="game__rules" onClick={rulesPage}>
+          <button
+            id="game__rules"
+            className="font-serif italic p-2 text-base rounded shadow-lg bg-pink-300 hover:bg-pink-200"
+            onClick={rulesPage}
+          >
             Spelregler
           </button>
-          <button id="high__score">Highscore-lista</button>
+          <button
+            id="high__score"
+            className="font-serif italic bg-pink-300 hover:bg-pink-200 p-2 ml-2
+            text-base rounded shadow-lg"
+            onClick={highscorePage}
+          >
+            Highscore-lista
+          </button>
         </nav>
-        <h1 className="header">Wordgame</h1>
+        <h1 className="font-serif italic text-5xl pt-10">Wordgame</h1>
         <Words
           changeWord={secretWordsLetters}
           unikLettersTrueFalse={unikLetters}

@@ -24,6 +24,9 @@ app.use('/api/userchoice/:id/unic?', routes);
 app.use('/highscores', routes);
 app.use('/api/highscores', routes);
 app.use('/highscores', routes);
+app.use('/highscores/letters', routes);
+app.use('/highscores/guesses', routes);
+app.use('/highscores/unik', routes);
 
 app.use(express.static('..word-game/build'));
 

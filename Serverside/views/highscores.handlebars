@@ -1,15 +1,64 @@
 <h1>Highscore-listan🥳</h1>
+<a href="http://localhost:5081/">Tillbaka till spelsidan</a>
+ 
 
+<button id="letters_btn" value="Antalet bokstäver" name="highscore"><a href="/highscores/letters"><label for="letters">Flest bokstäver och snabbast tid</label></a></button>
 
-<ol class="gradient-list">
+<button id="guesses_btn" value="Antal gissningar" name="highscore"><a href="/highscores/guesses"><label for="guesses">Minst antal gissningar och snabbast tid</label></a></button> 
+
+<button id="unik_btn" value="unika bokstäver" name="highscore"><a href="/highscores/unik"><label for="letters">Unika bokstäver och snabbast tid</label></a></button>
+<p>Snabbast tid:</p>
+
+<ol id="gradient-list">
     {{#each list}}
     <li>
-        <p>Namn: {{this.user.username}}</p>
-        <p>Tid i sekunder: {{this.user.time}}</p>
-        </p>Antal Bokstäver: {{this.user.letters}}</p>
-        </p>Var bokstäverna unika: {{this.user.unik}}</p>
-        </p>Antal gissningar: {{this.user.guesses}}</p>
+        {{!-- <p>Name: {{this.user.username}}</p> --}}
+        <p>Namn: {{this.username}}</p>
+        <p>Tid i sekunder: {{this.time}}</p>
+        </p>Antal Bokstäver: {{this.letters}}</p>
+        </p>Var bokstäverna unika: {{this.unik}}</p>
+        </p>Antal gissningar: {{this.guesses}}</p>
         
     </li>
     {{/each}}
 </ol>
+
+<ol class="gradient-list">
+    {{#each bestLetters}}
+    <li>
+        {{!-- <p>Name: {{this.user.username}}</p> --}}
+        <p>Namn: {{this.username}}</p>
+        <p>Tid i sekunder: {{this.time}}</p>
+        </p>Antal Bokstäver: {{this.letters}}</p>
+        </p>Var bokstäverna unika: {{this.unik}}</p>
+        </p>Antal gissningar: {{this.guesses}}</p>
+        
+    </li>
+    {{/each}}
+</ol>
+
+<ol class="gradient-list">
+    {{#each bestGuesses}}
+    <li>
+        {{!-- <p>Name: {{this.user.username}}</p> --}}
+        <p>Namn: {{this.username}}</p>
+        <p>Tid i sekunder: {{this.time}}</p>
+        </p>Antal Bokstäver: {{this.letters}}</p>
+        </p>Var bokstäverna unika: {{this.unik}}</p>
+        </p>Antal gissningar: {{this.guesses}}</p>
+        
+    </li>
+    {{/each}}
+</ol>
+
+
+{{!-- <ul>
+    {{#each timeList}}
+    <li> {{this.user.username}}
+         {{this.user.time}}
+      {{this.user.letters}}
+         {{this.user.unik}}
+        {{this.user.guesses}}
+    </li>
+    {{/each}}
+</ul> --}}

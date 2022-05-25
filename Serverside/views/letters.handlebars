@@ -1,0 +1,14 @@
+<h1>antal letters</h1>
+<a href="/highscores">Tillbaka</a>
+<ol class="gradient-list">
+    {{#each bestLetters}}
+    <li>
+        </p>Antal Bokstäver: {{this.letters}}</p>
+        <p>Tid i sekunder: {{this.time}}</p>
+        <p>Namn: {{this.username}}</p>
+        </p>Var bokstäverna unika: {{this.unik}}</p>
+        </p>Antal gissningar: {{this.guesses}}</p>
+        
+    </li>
+    {{/each}}
+</ol>

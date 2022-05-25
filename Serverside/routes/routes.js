@@ -1,26 +1,67 @@
 import express from 'express';
 import { sortWords } from '../files/sortWords.js';
 import { sortUnicWords } from '../files/sortUnicWords.js';
-import { sortHighscore } from '../files/sortHighscore.js';
-
 import fs from 'fs/promises';
 import mongoose from 'mongoose';
 import highscoreSchema from '../files/model.js';
-import { getHighscores, secretWords } from '../src/fetch.js';
+import {
+  getHighscores,
+  secretWords,
+  getHighscoresLetters,
+  getHighscoresGuesses,
+  getHighscoresUnik,
+} from '../src/fetch.js';
 
 const routes = express.Router();
 const highscores = mongoose.model('highscores', highscoreSchema);
 
 routes.get('/', async (req, res) => {
   const list = await getHighscores();
-  const temp = sortHighscore();
   let users;
   try {
     list.forEach((user) => {
       users = user;
-      // console.log(user);
     });
     res.render('highscores', { list });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+});
+
+routes.get('/letters', async (req, res) => {
+  const bestLetters = await getHighscoresLetters();
+  let users = bestLetters;
+  try {
+    bestLetters.forEach((user) => {
+      users = user;
+    });
+    res.render('letters', { bestLetters });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+});
+
+routes.get('/guesses', async (req, res) => {
+  const bestGuesses = await getHighscoresGuesses();
+  let users = bestGuesses;
+  try {
+    bestGuesses.forEach((user) => {
+      users = user;
+    });
+    res.render('guesses', { bestGuesses });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+});
+
+routes.get('/unik', async (req, res) => {
+  const UnikLetters = await getHighscoresUnik();
+  let users = UnikLetters;
+  try {
+    UnikLetters.forEach((user) => {
+      users = user;
+    });
+    res.render('unik', { UnikLetters });
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
@@ -62,13 +103,11 @@ routes.get('/rules', async (req, res) => {
 routes.post('/api/highscores', async (req, res) => {
   try {
     const data = new highscores({
-      user: {
-        time: req.body.time,
-        guesses: req.body.guesses,
-        letters: req.body.letters,
-        unik: req.body.unik,
-        username: req.body.username,
-      },
+      time: req.body.time,
+      guesses: req.body.guesses,
+      letters: req.body.letters,
+      unik: req.body.unik,
+      username: req.body.username,
     });
     data.save();
     const payload = await highscores.find();
@@ -80,7 +119,34 @@ routes.post('/api/highscores', async (req, res) => {
 
 routes.get('/api/highscores', async (req, res) => {
   try {
-    const data = await highscores.find();
+    const data = await highscores.find().sort({ time: 1 });
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+routes.get('/api/highscores/letters', async (req, res) => {
+  try {
+    const data = await highscores.find().sort({ letters: -1, time: 1 });
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+routes.get('/api/highscores/guesses', async (req, res) => {
+  try {
+    const data = await highscores.find().sort({ guesses: 1, time: 1 });
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+routes.get('/api/highscores/unik', async (req, res) => {
+  try {
+    const data = await highscores.find().sort({ unik: 1, time: 1 });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -5,8 +5,8 @@
   "main": "./src/server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon .",
-    "start": "node .",
+    "dev": " nodemon .",
+    "start": " node .",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --env=jsdom"
   },
   "repository": {

@@ -1,4 +1,4 @@
-import './UserInput.css';
+// import './UserInput.css';
 
 function UserInput(props) {
   let changedHandler = (event) => {
@@ -10,7 +10,8 @@ function UserInput(props) {
       <label htmlFor="guess"></label>
       <input
         type="text"
-        className="input__field"
+        className="rounded
+        shadow-xl bg-pink-500"
         value={props.inputText}
         onChange={(event) => changedHandler(event)}
       ></input>
