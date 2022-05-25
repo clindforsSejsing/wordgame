@@ -1,5 +1,3 @@
-// import './UserInput.css';
-
 function UserInput(props) {
   let changedHandler = (event) => {
     props.changeText(event.target.value);
@@ -11,7 +9,7 @@ function UserInput(props) {
       <input
         type="text"
         className="rounded
-        shadow-xl bg-pink-500"
+        shadow-xl bg-gray-200 mt-10 p-2 ml-6 w-42 h-10"
         value={props.inputText}
         onChange={(event) => changedHandler(event)}
       ></input>

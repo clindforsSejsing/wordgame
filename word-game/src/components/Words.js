@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import './Words.css';
 import { LettersFromUser } from './LettersFromUser.js';
 
 function Words(props) {
@@ -49,7 +48,7 @@ function Words(props) {
 
   return (
     <>
-      <div className="grid grid-rows-5  grid-flow-col gap-10 text-base font-serif pt-10 ">
+      <div className="grid grid-column-5  grid-flow-col gap-1 text-xs font-serif pt-8">
         <div>
           <input
             type="radio"
@@ -101,8 +100,8 @@ function Words(props) {
           <label htmlFor="allwords"> Unika Bokstäver </label>
         </div>
       </div>
-      <div className="flex flex-row w-48 bg-red-200">
-        <LettersFromUser word={word} className="bg-pink-300" />
+      <div className="flex justify-center">
+        <LettersFromUser word={word} />
       </div>
     </>
   );

@@ -87,7 +87,9 @@ const App = () => {
             Highscore-lista
           </button>
         </nav>
-        <h1 className="font-serif italic text-5xl pt-10">Wordgame</h1>
+        <h1 className="font-serif italic text-5xl pt-10 flex items-center justify-center ">
+          Wordgame
+        </h1>
         <Words
           changeWord={secretWordsLetters}
           unikLettersTrueFalse={unikLetters}
@@ -115,7 +117,7 @@ const App = () => {
           time={time}
         />
       </div>
-      <p id="footer">@CLS 2022-04-16</p>
+      <p className="p-4 ml-56 text-xs">@CLS 2022-05-25</p>
     </>
   );
 };

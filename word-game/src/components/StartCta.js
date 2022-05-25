@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './StartCta.css';
 function StartCta(props) {
   const [message, setMessage] = useState('');
   const [isActive, setIsActive] = useState(false);
@@ -64,7 +63,9 @@ function StartCta(props) {
     <>
       <input
         type="button"
-        className={`${isActive ? 'active' : 'inactive'}`}
+        className={`${
+          isActive ? 'active' : 'inactive'
+        } bg-yellow-300 rounded-lg w-15 h-10 p-2`}
         value="Gissa"
         id="start__game"
         onClick={clickChangeText}
