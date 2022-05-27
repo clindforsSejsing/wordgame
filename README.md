@@ -18,10 +18,10 @@ DATABASE_URI= secret
 
 #API-routs:
 
--/api/highscores
--/api/userchoice/
--/api/userchoice/:id
--/api/userchoice/:id/unic?
+- -/api/highscores
+- -/api/userchoice/
+- -/api/userchoice/:id
+- -/api/userchoice/:id/unic?
 
 #Routs
 
@@ -31,9 +31,9 @@ DATABASE_URI= secret
   ----(fastest time first, otherwise no sorting in highscore result)
 
 - /highscores/letters----
-  (filtred highscore result -fastest time, most letters)
+  (filtred highscore result -biggest amount of letters, fastest time)
 
-- /highscores/guesses---- (filtered highscore result- fastest time, least amount of guesses)
+- /highscores/guesses---- (filtered highscore result- least amount of guesses, fastest time)
 
 - /highscores/unik---- (filtered highscore result- unik letterwords first and the fastest time)
 
