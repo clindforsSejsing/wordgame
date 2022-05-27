@@ -1,5 +1,0 @@
-https://rapidapi.com/blog/create-react-app-express/
-how to combine express and node.
-
-https://javascript.plainenglish.io/back-to-basics-server-side-rendering-a-react-app-using-express-js-6fab99db5770
-render a page in node from express
