@@ -2,7 +2,7 @@ const tailwindcss = require('tailwindcss');
 
 module.exports = {
   content: [
-    './src/**/*.{js}',
+    './src/**/*.js',
     './src/App.js',
     '.src/index.js',
     './src/colorBoxFeedback.js',
