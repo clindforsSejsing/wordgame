@@ -66,14 +66,16 @@ const App = () => {
   function highscorePage() {
     window.location.href = 'http://localhost:5080/highscores';
   }
+  function playAgain() {
+    window.location.href = 'http://localhost:5081';
+  }
   return (
-    //  flex items-center justify-center h-screen
     <>
-      <div className="rounded shadow-lg p-10">
+      <div className="rounded shadow-lg p-10 w-screen h-screen">
         <nav>
           <button
             id="game__rules"
-            className="font-serif italic p-2 text-base rounded shadow-lg bg-pink-300 hover:bg-pink-200"
+            className="font-serif italic p-2 text-base rounded shadow-lg bg-pink-300 hover:bg-pink-200 md:ml-2"
             onClick={rulesPage}
           >
             Spelregler
@@ -86,18 +88,24 @@ const App = () => {
           >
             Highscore-lista
           </button>
+          <button
+            id="play__again"
+            className="font-serif italic bg-pink-300 hover:bg-pink-200 p-2 ml-2
+            text-base rounded shadow-lg"
+            onClick={playAgain}
+          >
+            Nytt Spel
+          </button>
         </nav>
-        <h1 className="font-serif italic text-5xl pt-10 flex items-center justify-center ">
+        <h1 className="font-serif italic text-5xl pt-10 flex items-center justify-center md:justify-start md:ml-52">
           Wordgame
         </h1>
         <Words
           changeWord={secretWordsLetters}
           unikLettersTrueFalse={unikLetters}
         />
-        <div id="gameBoxTwo">
-          <div id="second__Input">
-            <UsedLettersFromUser boxesToRender={boxes} />
-          </div>
+        <div className=" white-space: pre-wrap flex flex-center flex-wrap md:ml-52">
+          <UsedLettersFromUser boxesToRender={boxes} />
         </div>
         <UserInput inputText={inputText} changeText={inputTextSetter} />
         <StartCta
@@ -117,7 +125,6 @@ const App = () => {
           time={time}
         />
       </div>
-      <p className="p-4 ml-56 text-xs">@CLS 2022-05-25</p>
     </>
   );
 };

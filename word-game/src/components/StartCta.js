@@ -20,7 +20,6 @@ function StartCta(props) {
         setSeconds((seconds) => seconds + 1);
       }, 1000);
       props.getRightTime(seconds);
-      console.log(interval + 'intervall');
     } else if (!isActive && answer === 'correct') {
       clearInterval(interval);
     }
@@ -65,12 +64,12 @@ function StartCta(props) {
         type="button"
         className={`${
           isActive ? 'active' : 'inactive'
-        } bg-yellow-300 rounded-lg w-15 h-10 p-2`}
+        }, bg-yellow-300 rounded-lg w-15 h-10 p-2 ml-2`}
         value="Gissa"
         id="start__game"
         onClick={clickChangeText}
       />
-      <h2 className="message">{message}</h2>
+      <h2 className="message md:ml-52 pt-8 text-red">{message}</h2>
       <div className="time">Tid: {seconds}</div>
     </>
   );

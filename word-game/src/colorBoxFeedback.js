@@ -7,39 +7,41 @@ export function colorBoxFeedback(
   for (let c = 0; c < comparedWordsArray.length; c++) {
     if (comparedWordsArray[c].result === 'correct') {
       letterArr.push(
-        <li
+        <p
           key={guesses + '' + c}
-          className="box"
-          style={{ backgroundColor: 'rgb(79, 222, 93)' }}
+          className="box box-border h-16 w-16 p-4 border-4 rounded-lg shadow-xl font-serif text-2xl bg-green-400 bg-green text-white"
         >
           {guessedWord[c]}
-        </li>
+        </p>
       );
     } else if (comparedWordsArray[c].result === 'incorrect') {
       letterArr.push(
-        <li
+        <p
           key={guesses + '' + c}
-          className="box"
-          style={{ backgroundColor: 'rgb(251, 42, 42)' }}
+          className=" box box-border h-16 w-16 p-4 border-4 rounded-lg shadow-xl font-serif text-2xl bg-red text-white"
         >
           {guessedWord[c]}
-        </li>
+        </p>
       );
     } else if (comparedWordsArray[c].result === 'misplaced') {
       letterArr.push(
-        <li
+        <p
           key={guesses + '' + c}
-          className="box"
-          style={{ backgroundColor: 'rgb(79, 108, 222)' }}
+          className="box box-border h-16 w-16 p-4 border-4 rounded-lg shadow-xl font-serif text-2xl bg-blue text-white"
         >
           {guessedWord[c]}
-        </li>
+        </p>
       );
     }
 
     if (c === comparedWordsArray.length - 1) {
       let keyNr = c + 1;
-      letterArr.push(<br key={guesses + '' + keyNr}></br>);
+      letterArr.push(
+        <div
+          key={guesses + '' + keyNr}
+          style={{ height: '0', width: '100%' }}
+        ></div>
+      );
     }
   }
 

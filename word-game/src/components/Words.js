@@ -48,7 +48,7 @@ function Words(props) {
 
   return (
     <>
-      <div className="grid grid-column-5  grid-flow-col gap-1 text-xs font-serif pt-8">
+      <div className="grid grid-column-5  grid-flow-col gap-1 text-xs font-serif pt-8 md:justify-start md:px-24">
         <div>
           <input
             type="radio"
@@ -100,7 +100,7 @@ function Words(props) {
           <label htmlFor="allwords"> Unika Bokstäver </label>
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex center md:ml-52 md:pt-10 md:pb-2">
         <LettersFromUser word={word} />
       </div>
     </>

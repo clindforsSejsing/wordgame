@@ -5,7 +5,7 @@ function LettersFromUser(props) {
     for (let i = 0; i < props.word.length; i++) {
       elements.push(
         <div
-          className="box-border h-16 w-16 p-4 border-4 rounded-lg shadow-xl"
+          className="box-border h-16 w-16 p-4 border-4 rounded-lg shadow-xl font-serif text-xl"
           key={i}
           id={i}
         >

@@ -1,5 +1,7 @@
 function UsedLettersFromUser(props) {
-  return <>{props.boxesToRender}</>;
+  const inputBoxes = props.boxesToRender;
+
+  return inputBoxes;
 }
 
 export { UsedLettersFromUser };

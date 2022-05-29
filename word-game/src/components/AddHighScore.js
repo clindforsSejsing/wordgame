@@ -1,4 +1,3 @@
-import './AddHighScore.css';
 import React, { useState } from 'react';
 
 function AddHighScore(props) {
@@ -40,30 +39,46 @@ function AddHighScore(props) {
     return (
       <>
         <form onSubmit={sendHighscore}>
-          <h1> Du vann! Rätt ord var: {theRightWord}</h1>
-          <p>Tid: {timeResult} sekunder </p>
-          <p>Antal gissningar: {amountOfGuesses} </p>
-          <p>Antal bokstäver: {theRightWord.length} </p>
-          <p>Unika bokstäver: {unikSetting}</p>
-          <div className="addTo__highscore">
-            <h2 className="text__smallHeader">
-              Spara mitt resultat i Highscore-listan:
+          <h1 className="font-serif text-xl md:ml-52">
+            Du vann! Rätt ord var: {theRightWord}
+          </h1>
+          <p className="font-serif text-xs md:ml-52">
+            Tid: {timeResult} sekunder{' '}
+          </p>
+          <p className="font-serif text-xs md:ml-52">
+            Antal gissningar: {amountOfGuesses}
+          </p>
+          <p className="font-serif text-xs md:ml-52">
+            Antal bokstäver: {theRightWord.length}
+          </p>
+          <p className="font-serif text-xs md:ml-52">
+            Unika bokstäver: {unikSetting}
+          </p>
+          <div className="addTo__highscore font-serif text-xl md:ml-52">
+            <h2 className="text__smallHeader font-serif text-xl pb-2 pt-4">
+              Spara i Highscore-listan:
             </h2>
             <label htmlFor="name"></label>
             <input
               value={userName}
               type="text"
-              className="name__inputField"
+              className="name__inputField font-serif text-sm md:text-lg shadow-lg"
               placeholder="Namn"
               onChange={(e) => setUsername(e.target.value)}
               required
             ></input>
-            <button type="submit" onClick={handlerBtn} className="submit__btn">
+            <button
+              type="submit"
+              onClick={handlerBtn}
+              className="submit__btn bg-lime-200 shadow-lg rounded-lg w-15 h-8 w-28 md:ml-8"
+            >
               Spara
             </button>
           </div>
         </form>
-        <h2 className="message">{savedMessage}</h2>
+        <h2 className="message md:ml-52 pt-8 text-green animate-bounce">
+          {savedMessage}
+        </h2>
       </>
     );
   } else {

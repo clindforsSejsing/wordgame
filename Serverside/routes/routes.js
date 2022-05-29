@@ -13,15 +13,12 @@ import {
 } from '../src/fetch.js';
 
 const routes = express.Router();
+routes.use(express.static('static'));
 const highscores = mongoose.model('highscores', highscoreSchema);
 
 routes.get('/', async (req, res) => {
   const list = await getHighscores();
-  let users;
   try {
-    list.forEach((user) => {
-      users = user;
-    });
     res.render('highscores', { list });
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -30,11 +27,7 @@ routes.get('/', async (req, res) => {
 
 routes.get('/letters', async (req, res) => {
   const bestLetters = await getHighscoresLetters();
-  let users = bestLetters;
   try {
-    bestLetters.forEach((user) => {
-      users = user;
-    });
     res.render('letters', { bestLetters });
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -43,11 +36,7 @@ routes.get('/letters', async (req, res) => {
 
 routes.get('/guesses', async (req, res) => {
   const bestGuesses = await getHighscoresGuesses();
-  let users = bestGuesses;
   try {
-    bestGuesses.forEach((user) => {
-      users = user;
-    });
     res.render('guesses', { bestGuesses });
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -56,19 +45,15 @@ routes.get('/guesses', async (req, res) => {
 
 routes.get('/unik', async (req, res) => {
   const UnikLetters = await getHighscoresUnik();
-  let users = UnikLetters;
   try {
-    UnikLetters.forEach((user) => {
-      users = user;
-    });
     res.render('unik', { UnikLetters });
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
 });
 
-routes.use(express.static('./static'));
-routes.use('./static/rules1.png', express.static('images'));
+// routes.use(express.static('./static'));
+// routes.use('./static/rules1.png', express.static('images'));
 
 routes.get('/', (req, res) => {
   res.status(200).send('startside');

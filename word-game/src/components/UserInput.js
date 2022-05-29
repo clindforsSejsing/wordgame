@@ -9,7 +9,7 @@ function UserInput(props) {
       <input
         type="text"
         className="rounded
-        shadow-xl bg-gray-200 mt-10 p-2 ml-6 w-42 h-10"
+        shadow-xl bg-slate-100 mt-10 p-2 w-42 h-10 font-serif font-medium text-2x md:ml-52"
         value={props.inputText}
         onChange={(event) => changedHandler(event)}
       ></input>

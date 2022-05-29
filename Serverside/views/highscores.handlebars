@@ -1,64 +1,25 @@
-<h1>Highscore-listan🥳</h1>
-<a href="http://localhost:5081/">Tillbaka till spelsidan</a>
- 
+<a class="prev-link"href="http://localhost:5081/">Till Spelsidan</a>
 
-<button id="letters_btn" value="Antalet bokstäver" name="highscore"><a href="/highscores/letters"><label for="letters">Flest bokstäver och snabbast tid</label></a></button>
+<button id="letters_btn" value="Antalet bokstäver" name="highscore"><a class="letters" href="/highscores/letters"><label for="letters">Flest Bokstäver</label></a></button>
 
-<button id="guesses_btn" value="Antal gissningar" name="highscore"><a href="/highscores/guesses"><label for="guesses">Minst antal gissningar och snabbast tid</label></a></button> 
+<button id="guesses_btn" value="Antal gissningar" name="highscore"><a class="guesses" href="/highscores/guesses"><label for="guesses">Antal gissningar</label></a></button> 
 
-<button id="unik_btn" value="unika bokstäver" name="highscore"><a href="/highscores/unik"><label for="letters">Unika bokstäver och snabbast tid</label></a></button>
-<p>Snabbast tid:</p>
+<button id="unik_btn" value="unika bokstäver" name="highscore"><a class="unik" href="/highscores/unik"><label for="letters">Unika Bokstäver</label></a></button>
+
+
+<h1 class="title_highscore">Highscore-listan🏆</h1>
+
+<p class="fast_time">Snabbast tid:</p>
 
 <ol id="gradient-list">
     {{#each list}}
     <li>
-        {{!-- <p>Name: {{this.user.username}}</p> --}}
         <p>Namn: {{this.username}}</p>
-        <p>Tid i sekunder: {{this.time}}</p>
-        </p>Antal Bokstäver: {{this.letters}}</p>
-        </p>Var bokstäverna unika: {{this.unik}}</p>
-        </p>Antal gissningar: {{this.guesses}}</p>
-        
+        <p>Tid i Sek: {{this.time}}</p>
+        <p>Antal Bokstäver: {{this.letters}}</p>
+        <p>Unika Bokstäver? {{this.unik}}</p>
+        <p>Antal Gissningar: {{this.guesses}}</p>
     </li>
     {{/each}}
 </ol>
 
-<ol class="gradient-list">
-    {{#each bestLetters}}
-    <li>
-        {{!-- <p>Name: {{this.user.username}}</p> --}}
-        <p>Namn: {{this.username}}</p>
-        <p>Tid i sekunder: {{this.time}}</p>
-        </p>Antal Bokstäver: {{this.letters}}</p>
-        </p>Var bokstäverna unika: {{this.unik}}</p>
-        </p>Antal gissningar: {{this.guesses}}</p>
-        
-    </li>
-    {{/each}}
-</ol>
-
-<ol class="gradient-list">
-    {{#each bestGuesses}}
-    <li>
-        {{!-- <p>Name: {{this.user.username}}</p> --}}
-        <p>Namn: {{this.username}}</p>
-        <p>Tid i sekunder: {{this.time}}</p>
-        </p>Antal Bokstäver: {{this.letters}}</p>
-        </p>Var bokstäverna unika: {{this.unik}}</p>
-        </p>Antal gissningar: {{this.guesses}}</p>
-        
-    </li>
-    {{/each}}
-</ol>
-
-
-{{!-- <ul>
-    {{#each timeList}}
-    <li> {{this.user.username}}
-         {{this.user.time}}
-      {{this.user.letters}}
-         {{this.user.unik}}
-        {{this.user.guesses}}
-    </li>
-    {{/each}}
-</ul> --}}

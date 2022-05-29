@@ -1,13 +1,13 @@
-<h1>antal gissningar</h1>
-<a href="/highscores">Tillbaka</a>
+<a class="prev-link" href="/highscores">Tillbaka</a>
+<h1>Antal Gissningar 🔢</h1>
 <ol class="gradient-list">
     {{#each bestGuesses}}
     <li>
-        </p>Antal gissningar: {{this.guesses}}</p>
-        <p>Tid i sekunder: {{this.time}}</p>
+        </p>Antal Gissningar: {{this.guesses}}</p>
+        <p>Tid i Sek: {{this.time}}</p>
         <p>Namn: {{this.username}}</p>
         </p>Antal Bokstäver: {{this.letters}}</p>
-        </p>Var bokstäverna unika: {{this.unik}}</p>
+        </p>Unika Bokstäver? {{this.unik}}</p>
         
         
     </li>
