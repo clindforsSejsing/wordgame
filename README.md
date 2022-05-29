@@ -2,11 +2,9 @@
 
 To start:
 
-npm install
+cd Serverside, npm install, npm start. To start test: npm test.
 
-cd Serverside, npm start. To start test: npm test.
-
-cd word-game, npm build/npm start
+cd word-game, npm install, npm build/npm start. 
 
 You will need a .env-file:
 
